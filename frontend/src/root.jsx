@@ -9,8 +9,9 @@ class Root extends React.Component {
     }
 
     render() {
+        const {store} = this.props;
         return (
-            <Provider>
+            <Provider store={store}>
                 <HashRouter>
                     <App />
                 </HashRouter>

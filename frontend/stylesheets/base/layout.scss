@@ -1,0 +1,35 @@
+html {
+    font-family: $main-font;
+    color: $main-text-color;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+input {
+    border: 1px solid gray;
+    padding: 3px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-btn {
+    background-color: $asana-purp;
+    color: #FFFFFF;
+    height: 32px;
+    padding: 0 10px;
+    // width: 80px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
