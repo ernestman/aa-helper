@@ -35,8 +35,10 @@ class LoginAPIView(APIView):
 class GetUserAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get(self, request, id):
-        user = User.objects.get(id=id)
+    def get(self, request):
+        # user = User.objects.get(id=id)
+        # print(request.user)
+        user = request.user
         serializer = UserSerializer(user)
         return Response(serializer.data)
 

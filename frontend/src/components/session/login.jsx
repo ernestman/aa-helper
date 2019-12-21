@@ -32,14 +32,14 @@ class Login extends React.Component {
             <div className="sessions-container">
                 <h1>Login Form</h1>
                 <form onSubmit={this.handleLogin}>
-                    <p>email</p>
+                    <p>Email</p>
                     <input
                         type="text"
                         value={this.state.email}
                         onChange={this.handleInput("email")}
                     />
 
-                    <p>password</p>
+                    <p>Password</p>
                     <input
                         type="password"
                         value={this.state.password}
