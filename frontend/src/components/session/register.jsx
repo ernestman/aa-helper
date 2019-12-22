@@ -1,5 +1,5 @@
 import React from "react";
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 
 class Register extends React.Component {
     constructor(props) {
@@ -36,31 +36,38 @@ class Register extends React.Component {
     render() {
         return (
             <div className="sessions-container">
-                <h1>Register Form</h1>
-                <form onSubmit={this.handleRegister}>
-                    <p>Email</p>
+                <h1 className="session-header">Register</h1>
+                <form className="session-form" onSubmit={this.handleRegister}>
+                    <p className="session-form-label">Email</p>
                     <input
                         type="text"
                         value={this.state.email}
+                        placeholder="name@company.com"
                         onChange={this.handleInput("email")}
                     />
 
-                    <p>Password</p>
+                    <p className="session-form-label">Password</p>
                     <input
                         type="password"
                         value={this.state.password}
+                        placeholder="Password"
                         onChange={this.handleInput("password")}
                     />
 
-                    <p>Confirm Password</p>
+                    <p className="session-form-label">Confirm Password</p>
                     <input
                         type="password"
                         value={this.state.password2}
+                        placeholder="Confirm password"
                         onChange={this.handleInput("password2")}
                     />
 
-                    <button className="main-btn">Register</button>
+                    <button className="form-btn">Sign up</button>
                 </form>
+                <div className="form-redirect">
+                    <p>Already have an account?</p>&nbsp;
+                    <Link to="/login">Log in</Link>
+                </div>
             </div>
         )
     }

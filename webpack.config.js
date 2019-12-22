@@ -19,7 +19,14 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
-            }
+            },
+            {
+                test: /\.(png|svg|jpe?g|gif)$/i,
+                loader: 'url-loader',
+                // options: {
+                    // publicPath: 'frontend'
+                // }
+            },
         ]
     },
     devtool: 'inline-source-map',

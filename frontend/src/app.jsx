@@ -6,6 +6,7 @@ import Splash from "./components/splash";
 import RegisterContainer from "./components/session/register_container";
 import LoginContainer from "./components/session/login_container";
 import Header from "./components/header";
+import Footer from "./components/footer";
 
 
 const mdtp = dispatch => ({
@@ -36,6 +37,10 @@ class App extends React.Component {
                         <Route exact path="/login" component={LoginContainer}/>
                     </Switch>
                 </main>
+
+                <footer>
+                    <Footer />
+                </footer>
             </div>
         )
     }

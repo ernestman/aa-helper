@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { deleteSession } from "../actions/session_actions";
+import Logo from "../../images/aa_logo.svg";
 
 const mstp = state => ({
     isAuthenticated: state.session.isAuthenticated
@@ -20,17 +21,16 @@ const Header = (props) => {
             </div>
         </div>
     ) : (
-            <div className="session-links">
-                <div className="session-lnk"><Link to="/login">Login</Link></div>
-                <div className="session-lnk"><Link to="/register">Register</Link></div>
-            </div>
+        <div className="session-links">
+            <div className="session-lnk"><Link to="/login">Log In</Link></div>
+            <div className="session-lnk"><Link to="/register">Register</Link></div>
+        </div>
         )
 
     return (
         <div className="header-container">
-            <Link to="/" id="main-icon"><h1>a/A Helper</h1></Link>
-            <div className="header-links">
-            </div>
+            <Link to="/" id="main-icon"><img id="logo" src={Logo} /></Link>
+            {/* <div className="header-links"></div> */}
             {sessionLinks}
         </div>
     )

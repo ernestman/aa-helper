@@ -1,14 +1,21 @@
 .header-container {
     width: 100%;
-    border: 3px solid red;
-    height: 84px;
+    background-color: #FFFFFF;
+    height: 60px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
 }
 
 #main-icon {
-    border: 3px solid purple;
+    // border: 2px solid purple;
+    margin-left: 30px;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
 }
 
 .header-links {
@@ -20,7 +27,8 @@
 .session-links {
     display: flex;
     justify-content: space-around;
-    width: 25%;
+    width: 14%;
+    margin-right: 30px;
 }
 
 .session-lnk {
