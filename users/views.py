@@ -12,6 +12,7 @@ class RegisterAPIView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
+        # serializer = RegisterSerializer(data=request)
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save() # creates new instance of serializer or updates serializer (ONLY create/update)
@@ -36,8 +37,7 @@ class GetUserAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        # user = User.objects.get(id=id)
-        # print(request.user)
+        print(request.user.id)
         user = request.user
         serializer = UserSerializer(user)
         return Response(serializer.data)

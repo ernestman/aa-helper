@@ -20,6 +20,7 @@ from knox.views import LogoutView
 
 urlpatterns = [
     path("", include('frontend.urls')),
+    path("routes/", include('routes.urls')),
     path('admin/', admin.site.urls),
     path('user', GetUserAPIView.as_view()),
     path("register", RegisterAPIView.as_view()),

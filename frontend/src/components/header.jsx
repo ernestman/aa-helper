@@ -5,7 +5,7 @@ import { deleteSession } from "../actions/session_actions";
 import Logo from "../../images/aa_logo.svg";
 
 const mstp = state => ({
-    isAuthenticated: state.session.isAuthenticated
+    token: state.session.token
 })
 
 const mdtp = dispatch => ({
@@ -14,7 +14,7 @@ const mdtp = dispatch => ({
 
 const Header = (props) => {
 
-    const sessionLinks = props.isAuthenticated ? (
+    const sessionLinks = props.token ? (
         <div className="session-links">
             <div className="session-lnk" onClick={() => props.deleteSession()}>
                 Logout
