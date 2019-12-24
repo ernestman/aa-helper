@@ -1,29 +1,50 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { deleteSession } from "../actions/session_actions";
+import {Link, withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {deleteSession} from "../actions/session_actions";
+import {clearRoutes} from "../actions/route_actions";
 import Logo from "../../images/aa_logo.svg";
 
 const mstp = state => ({
-    token: state.session.token
+    token: state.session.token,
+    routeId: Object.keys(state.entities.routes)[0]
 })
 
 const mdtp = dispatch => ({
-    deleteSession: () => dispatch(deleteSession())
+    deleteSession: () => dispatch(deleteSession()),
+    clearRoutes: () => dispatch(clearRoutes())
 })
 
 const Header = (props) => {
 
+    const handleLogout = event => {
+        event.preventDefault();
+        props.clearRoutes();
+        props.deleteSession()
+        props.history.push("/")
+    }
+
+    const handleRoutePage = event => {
+        event.preventDefault();
+        if (props.routeId) {
+            props.history.push(`/routes/${props.routeId}`)
+        } 
+        else {
+            props.history.push("/routes")
+        }
+    }
+
     const sessionLinks = props.token ? (
         <div className="session-links">
-            <div className="session-lnk" onClick={() => props.deleteSession()}>
+            <div className="session-lnk" onClick={handleRoutePage}>Routes</div>
+            <div className="session-lnk" onClick={handleLogout}>
                 Logout
             </div>
         </div>
     ) : (
         <div className="session-links">
             <div className="session-lnk"><Link to="/login">Log In</Link></div>
-            <div className="session-lnk"><Link to="/register">Register</Link></div>
+            <div className="session-lnk"><Link to="/register">Sign Up</Link></div>
         </div>
         )
 
@@ -36,4 +57,4 @@ const Header = (props) => {
     )
 }
 
-export default connect(mstp, mdtp)(Header);
+export default withRouter(connect(mstp, mdtp)(Header));

@@ -7,6 +7,7 @@ import RegisterContainer from "./components/session/register_container";
 import LoginContainer from "./components/session/login_container";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import RoutesMainContainer from "./components/routes/routes_container";
 
 
 const mdtp = dispatch => ({
@@ -19,13 +20,13 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.props.retrieveUser();
     }
 
     render() {
         return (
             <div>
-
                 <header>
                     <Header />
                 </header>
@@ -33,8 +34,9 @@ class App extends React.Component {
                 <main>
                     <Switch>
                         <Route exact path="/" component={Splash}/>
-                        <Route exact path="/register" component={RegisterContainer}/>
-                        <Route exact path="/login" component={LoginContainer}/>
+                        <Route path="/register" component={RegisterContainer}/>
+                        <Route path="/login" component={LoginContainer}/>
+                        <Route path="/routes" component={RoutesMainContainer}/>
                     </Switch>
                 </main>
 

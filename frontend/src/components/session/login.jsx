@@ -11,6 +11,10 @@ class Login extends React.Component {
         this.handleLogin = this.handleLogin.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.clearSessionErrors()
+    }
+
     handleInput(inputType) {
         return (event) => {
             this.setState({ [inputType]: event.target.value })
@@ -30,7 +34,7 @@ class Login extends React.Component {
 
         return (
             <div className="sessions-container">
-                <h1 className="session-header">Log in</h1>
+                <h1 className="session-header">Log In</h1>
                 <form className="session-form" onSubmit={this.handleLogin}>
                     <p className="session-form-label">Email</p>
                     <input

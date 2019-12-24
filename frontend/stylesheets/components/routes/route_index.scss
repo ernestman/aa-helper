@@ -1,0 +1,43 @@
+.route-item {
+    margin-bottom: 20px;
+    color: $asana-navy;
+    border-radius: 5px;;
+
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.route-item:hover {
+    background-color: $asana-purp;
+}
+
+.route-name {
+    display: flex;
+    align-items: center;
+}
+
+.route-name i {
+    margin-right: 10px;
+}
+
+.route-loc {
+    display: flex;
+    align-items: center;
+}
+
+.route-city {
+    display: flex;
+    justify-content: space-evenly;
+
+    // border: 1px solid blue;
+}
+
+.route-info {
+    display: flex;
+    justify-content: space-evenly;
+
+    // border: 1px solid green;
+}
+
+
+

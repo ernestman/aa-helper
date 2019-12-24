@@ -32,5 +32,10 @@
 }
 
 .session-lnk {
+    transition: 0.2s;
     cursor: pointer;
+}
+
+.session-lnk:hover {
+    color: $asana-purp
 }

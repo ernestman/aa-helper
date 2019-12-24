@@ -6,9 +6,13 @@
     // justify-content: space-around;
 // }
 
+.splash-text {
+    color: $p-text-color;
+}
+
 .splash-head {
     border: 1px solid pink;
-    width: 80%;
+    width: 94%;
     height: 500px;
     margin: 0 auto;
     margin-top: 40px;
@@ -24,10 +28,6 @@
     margin: 40px 0;
     font-size: 22px;
 }
-
-// .splash-head a {
-//     margin-top: 40px;
-// }
 
 .splash-feature {
     height: 400px;

@@ -12,6 +12,10 @@ class Register extends React.Component {
         this.handleRegister = this.handleRegister.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.clearSessionErrors()
+    }
+
     handleInput(inputType) {
         return (event) => {
             this.setState({ [inputType]: event.target.value })
@@ -24,19 +28,23 @@ class Register extends React.Component {
             email: this.state.email,
             password: this.state.password
         }
-        // debugger
         if (this.state.password === this.state.password2) {
             this.props.registerUser(newUser)
                 .then(
                     () => this.props.history.push("/")
                 )
+        } else {
+            let errors = {
+                password: ["Passwords do not match"]
+            }
+            this.props.customSessionErrors(errors)
         }
     }
 
     render() {
         return (
             <div className="sessions-container">
-                <h1 className="session-header">Register</h1>
+                <h1 className="session-header">Sign Up</h1>
                 <form className="session-form" onSubmit={this.handleRegister}>
                     <p className="session-form-label">Email</p>
                     <input

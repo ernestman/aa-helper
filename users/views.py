@@ -1,18 +1,16 @@
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from knox.models import AuthToken
 
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
+from routes.serializers import RouteSerializer
 from .models import User
 
 class RegisterAPIView(APIView):
     permission_classes = [AllowAny]
-
     def post(self, request):
-        # serializer = RegisterSerializer(data=request)
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save() # creates new instance of serializer or updates serializer (ONLY create/update)
@@ -23,22 +21,29 @@ class RegisterAPIView(APIView):
 
 class LoginAPIView(APIView):
     permission_classes = [AllowAny]
-
     def post(self, request):
-        serializer = LoginSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data # if serializer data is _valid ^^^ we can access it
+        user_serializer = LoginSerializer(data=request.data)
+        user_serializer.is_valid(raise_exception=True)
+        user = user_serializer.validated_data # if serializer data is _valid ^^^ we can access it
+        print(user.id)
+        routes = User.objects.get(id=user.id).routes.all()
+        routes_serializer = RouteSerializer(routes, many=True)
         return Response({
-            "user": serializer.data,
+            "user": user_serializer.data,
+            "routes": routes_serializer.data,
             "token": AuthToken.objects.create(user)[1]
         })
 
 class GetUserAPIView(APIView):
     permission_classes = [IsAuthenticated]
-
     def get(self, request):
         print(request.user.id)
         user = request.user
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+        routes = User.objects.get(id=request.user.id).routes.all()
+        user_serializer = UserSerializer(user)
+        routes_serializer = RouteSerializer(routes, many=True)
+        return Response({
+            "user": user_serializer.data,
+            "routes": routes_serializer.data
+        })
 
