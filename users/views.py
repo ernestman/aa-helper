@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from knox.models import AuthToken
+from .util import routes_google_api
 
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 from routes.serializers import RouteSerializer
@@ -25,9 +26,11 @@ class LoginAPIView(APIView):
         user_serializer = LoginSerializer(data=request.data)
         user_serializer.is_valid(raise_exception=True)
         user = user_serializer.validated_data # if serializer data is _valid ^^^ we can access it
-        print(user.id)
+
         routes = User.objects.get(id=user.id).routes.all()
-        routes_serializer = RouteSerializer(routes, many=True)
+        routes_api_request = routes_google_api(routes)
+
+        routes_serializer = RouteSerializer(routes_api_request, many=True)
         return Response({
             "user": user_serializer.data,
             "routes": routes_serializer.data,
@@ -39,9 +42,12 @@ class GetUserAPIView(APIView):
     def get(self, request):
         print(request.user.id)
         user = request.user
-        routes = User.objects.get(id=request.user.id).routes.all()
         user_serializer = UserSerializer(user)
-        routes_serializer = RouteSerializer(routes, many=True)
+
+        routes = User.objects.get(id=request.user.id).routes.all()
+        routes_api_request = routes_google_api(routes)
+
+        routes_serializer = RouteSerializer(routes_api_request, many=True)
         return Response({
             "user": user_serializer.data,
             "routes": routes_serializer.data

@@ -15,6 +15,7 @@ class CreateRouteAPIView(APIView):
             start_lon=request.data["start_lon"],
             end_lat=request.data["end_lat"],
             end_lon=request.data["end_lon"],
+            travel_mode=request.data["travel_mode"],
             user = request.user  
         )
         serializer = RouteSerializer(new_route)

@@ -13,7 +13,7 @@ const RoutesIndex = props => {
 
     return (
         <div className="routes-index-container">
-            <h2>My Routes</h2>
+            <h2 className="routes-index-header">My Routes</h2>
             <div>
                 {myRoutes}
             </div>

@@ -7,6 +7,16 @@ class Route(models.Model):
     start_lon = models.FloatField(blank=False)
     end_lat = models.FloatField(blank=False)
     end_lon = models.FloatField(blank=False)
+    travel_mode = models.CharField(
+        max_length=50,
+        choices = [
+            ('DRIVING', 'Driving'),
+            ('BICYCLING', 'Biking'),
+            ('TRANSIT', 'Transit'),
+            ('WALKING', 'Walking')
+        ],
+        default='DRIVING'
+    )
     user = models.ForeignKey(
         User,
         related_name="routes", #association name

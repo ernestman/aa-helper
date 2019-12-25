@@ -10,7 +10,23 @@
     // justify-content: space-around;
 }
 
-.session-form input {
+.register-form-top {
+    display: flex;
+    justify-content: space-between;
+
+    width: 105%;
+}
+
+.register-form-input {
+    width: 44%;
+}
+
+.register-form-label {
+    width: 100%;
+    margin-left: 8px;
+}
+
+.session-form-input {
     margin: 10px 0;
 }
 

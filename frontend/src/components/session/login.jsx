@@ -38,6 +38,7 @@ class Login extends React.Component {
                 <form className="session-form" onSubmit={this.handleLogin}>
                     <p className="session-form-label">Email</p>
                     <input
+                        className="session-form-input"
                         type="text"
                         value={this.state.email}
                         placeholder="name@company.com"
@@ -46,6 +47,7 @@ class Login extends React.Component {
 
                     <p className="session-form-label">Password</p>
                     <input
+                        className="session-form-input"
                         type="password"
                         value={this.state.password}
                         placeholder="Password"
