@@ -46,6 +46,7 @@ class GetUserAPIView(APIView):
 
         routes = User.objects.get(id=request.user.id).routes.all()
         routes_api_request = routes_google_api(routes)
+            
 
         routes_serializer = RouteSerializer(routes_api_request, many=True)
         return Response({

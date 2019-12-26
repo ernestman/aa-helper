@@ -5,6 +5,8 @@ import {Link, withRouter} from "react-router-dom";
 class RouteItem extends React.Component {
     constructor(props) {
         super(props)
+        
+        this.clickRouteHandler = this.clickRouteHandler.bind(this);
     }
 
     
@@ -76,7 +78,7 @@ export default withRouter(RouteItem);
     // this.clickRouteHandler = this.clickRouteHandler.bind(this);
     // this.handleGeocode = this.handleGeocode.bind(this);
     // this.handleDirections = this.handleDirections.bind(this);
-}
+// }
 
     // componentDidMount() {
     //     const {start_lat, start_lon, end_lat, end_lon, travel_mode} = this.props.route;

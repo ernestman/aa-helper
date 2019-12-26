@@ -21,10 +21,22 @@
 
 .routes-index-container {
     // border: 1px solid purple;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+    height: 100%;
+}
+
+.routes-index {
     overflow: scroll;
-    width: 25%
 }
 
 .routes-index-header {
     margin-bottom: 8px;
+}
+
+.default-map-container {
+    width: 600px;
+    height: 400px;
 }

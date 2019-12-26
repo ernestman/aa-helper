@@ -28,7 +28,6 @@ class IndexRouteAPIView(APIView):
         serializer = RouteSerializer(routes, many=True)
         return Response(serializer.data)
 
-
 class DeleteRouteAPIView(APIView):
     permission_classes = [IsAuthenticated]
     def delete(self, request, id):

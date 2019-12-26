@@ -3,7 +3,7 @@ import {Route, Switch, withRouter} from "react-router-dom";
 import RoutesIndex from "./routes_index";
 import RoutesMap from "./routes_map";
 
-import Test from "../test";
+import MapDefault from "./map_default";
 
 class RoutesMain extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class RoutesMain extends React.Component {
                 <h1>Routes page</h1>
                 <div className="routes-main-top">
                     <Switch>
-                        <Route exact path={this.props.match.path} component={Test}/>
+                        <Route exact path={this.props.match.path} component={MapDefault}/>
                         <Route path={`${this.props.match.path}/:id`} component={RoutesMap}/>
                     </Switch>
 
