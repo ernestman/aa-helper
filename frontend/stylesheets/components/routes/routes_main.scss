@@ -14,29 +14,32 @@
     border: 2px solid gray;
 }
 
-.routes-map-container {
-    border: 1px solid red;
-    width: 70%;
-}
 
 .routes-index-container {
     // border: 1px solid purple;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
     width: 25%;
     height: 100%;
 }
 
 .routes-index {
     overflow: scroll;
+    height: 88%;
 }
 
 .routes-index-header {
     margin-bottom: 8px;
 }
 
-.default-map-container {
-    width: 600px;
+// .main-map-container {
+//     width: 600px;
+//     height: 400px;
+// }
+
+.routes-map-container {
+    // border: 1px solid red;
+    width: 70%;
     height: 400px;
 }

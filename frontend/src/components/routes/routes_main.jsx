@@ -11,11 +11,16 @@ class RoutesMain extends React.Component {
     }
 
     componentDidMount() {
-        window.scrollTo(0, 0);
+        console.log("routes main rendered")
     }
 
     render() {
         const {routes} = this.props;
+        const routeId = parseInt(this.props.location.pathname.slice(-1))
+        const singleRoute = routes.find( route => (
+            route.id === routeId
+        ))
+        // debugger
         return (
             <div className="routes-main-container">
                 <h1>Routes page</h1>
@@ -23,6 +28,9 @@ class RoutesMain extends React.Component {
                     <Switch>
                         <Route exact path={this.props.match.path} component={MapDefault}/>
                         <Route path={`${this.props.match.path}/:id`} component={RoutesMap}/>
+                        {/* <Route path={`${this.props.match.path}/:id`} 
+                            render={(props) => (<RoutesMap {...props} singleRoute={singleRoute}/>)}
+                        /> */}
                     </Switch>
 
                     <RoutesIndex routes={routes}/>
