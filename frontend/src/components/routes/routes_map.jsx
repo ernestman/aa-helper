@@ -104,13 +104,6 @@ class RoutesMap extends React.Component {
             // this.initMap()
         // }
 
-        
-        // const initMap = () => {
-        //     const directionsService = new google.maps.DirectionsService();
-        //     const directionsRenderer = new google.maps.DirectionsRenderer();
-            
-        // }
-
     }
 }
 
