@@ -20,7 +20,7 @@ class RoutesMain extends React.Component {
         const singleRoute = routes.find( route => (
             route.id === routeId
         ))
-        // debugger
+
         return (
             <div className="routes-main-container">
                 <h1>Routes page</h1>

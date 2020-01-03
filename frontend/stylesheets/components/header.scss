@@ -8,20 +8,24 @@
     margin: 0 auto;
 }
 
-#main-icon {
+// #main-icon {
     // border: 2px solid purple;
-    margin-left: 30px;
-}
+// }
+
 
 #logo {
     width: 50px;
     height: 50px;
+    margin: 0 30px;
+    // border: 1px solid blue;
 }
 
 .header-links {
+    // border: 1px solid red;
     display: flex;
     justify-content: space-around;
-    width: 25%;
+    align-items: center;
+    // width: 25%;
 }
 
 .session-links {
@@ -29,6 +33,7 @@
     justify-content: space-around;
     width: 14%;
     margin-right: 30px;
+    // border: 1px solid red;
 }
 
 .session-lnk {

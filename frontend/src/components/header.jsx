@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {deleteSession} from "../actions/session_actions";
 import {clearRoutes} from "../actions/route_actions";
 import Logo from "../../images/aa_logo.svg";
+import CircleLogo from "../../images/aa_circle_logo.png";
 
 const mstp = state => ({
     token: state.session.token,
@@ -37,9 +38,7 @@ const Header = (props) => {
     const sessionLinks = props.token ? (
         <div className="session-links">
             <div className="session-lnk" onClick={handleRoutePage}>Routes</div>
-            <div className="session-lnk" onClick={handleLogout}>
-                Logout
-            </div>
+            <div className="session-lnk" onClick={handleLogout}>Logout</div>
         </div>
     ) : (
         <div className="session-links">
@@ -50,8 +49,11 @@ const Header = (props) => {
 
     return (
         <div className="header-container">
-            <Link to="/" id="main-icon"><img id="logo" src={Logo} /></Link>
-            {/* <div className="header-links"></div> */}
+            <div className="header-links">
+                {/* <Link to="/" id="logo"><img src={Logo} /></Link> */}
+                <Link to="/" id="logo"><img src={CircleLogo} /></Link>
+                <Link to="/food" id="food-link">Food</Link>
+            </div>
             {sessionLinks}
         </div>
     )

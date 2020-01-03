@@ -8,6 +8,7 @@ import LoginContainer from "./components/session/login_container";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import RoutesMainContainer from "./components/routes/routes_container";
+import FoodMain from "./components/food/food_main";
 
 
 const mdtp = dispatch => ({
@@ -22,7 +23,6 @@ class App extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         this.props.retrieveUser();
-        console.log("app rendered")
     }
 
     render() {
@@ -37,6 +37,7 @@ class App extends React.Component {
                         <Route exact path="/" component={Splash}/>
                         <Route path="/register" component={RegisterContainer}/>
                         <Route path="/login" component={LoginContainer}/>
+                        <Route path="/food" component={FoodMain}/>
                         <Route path="/routes" component={RoutesMainContainer}/>
                     </Switch>
                 </main>
