@@ -1,9 +1,5 @@
 import axios from "axios";
 
-// export const getUser = () => {
-//     return axios.get("/user", tokenConfig(getState))
-// }
-
 export const register = user => {
     return axios.post("/register", user)
 }

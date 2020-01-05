@@ -1,6 +1,5 @@
 import React from "react";
 import {Link, withRouter} from "react-router-dom";
-// import {reverseGeocode, getDirections} from "../../util/google_api_util";
 
 class RouteItem extends React.Component {
     constructor(props) {

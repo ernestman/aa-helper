@@ -52,7 +52,7 @@ const Header = (props) => {
             <div className="header-links">
                 {/* <Link to="/" id="logo"><img src={Logo} /></Link> */}
                 <Link to="/" id="logo"><img src={CircleLogo} /></Link>
-                <Link to="/food" id="food-link">Food</Link>
+                <Link to="/food" id="food-link">Food & Restaurants</Link>
             </div>
             {sessionLinks}
         </div>

@@ -1,15 +1,26 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 import MainGif from "../../images/aa_splash.gif";
 import AsanaChecks from "../../images/asana-checks.png"
 
-const Splash = () => {
+const mstp = state => ({
+    isAuthenticated: state.session.isAuthenticated
+})
+
+const Splash = (props) => {
+    const splashLink = props.isAuthenticated ? (
+        <Link to="/food" className="big-btn">Food Nearby</Link>
+    ) : (
+        <Link to="register" className="big-btn">Sign Up</Link>
+    )
     return (
         <div className="splash-container">
             <div className="splash-head">
                 <h1>Welcome to a/A Helper</h1>
                 <p className="splash-text">a/A Helper is a dashboard App Academy students can use that takes care of the little things, so students can focus on what matters most</p>
-                <Link to="/register" className="big-btn">Sign up</Link>
+                {splashLink}
+                {/* <Link to="/register" className="big-btn">Sign up</Link> */}
                 {/* <img id="main-gif" src={MainGif}/> */}
                 <img src={AsanaChecks}/>
             </div>
@@ -65,4 +76,4 @@ const Splash = () => {
     )
 }
 
-export default Splash;
+export default connect(mstp, null)(Splash);

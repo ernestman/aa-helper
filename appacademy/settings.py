@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import datetime
 
+from corsheaders.defaults import default_headers
+
 db_username = os.environ.get("DB_USERNAME")
 db_password = os.environ.get("DB_PASSWORD")
 
@@ -47,7 +49,8 @@ INSTALLED_APPS = [
     'frontend',
 
     'rest_framework',
-    'knox'
+    'knox',
+    'corsheaders'
 ]
 
 REST_FRAMEWORK = {
@@ -59,14 +62,34 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# MIDDLEWARE_CLASSES = (
+#     'corsheaders.middleware.CorsMiddleware',
+#     'django.middleware.common.CommonMiddleware'
+# )
+
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'Access-Control-Allow-Origin',
+]
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
+]
+# CORS_ORIGIN_REGEX_WHITELIST = [
+#     'http://localhost:8000',
+# ]
 
 ROOT_URLCONF = 'appacademy.urls'
 

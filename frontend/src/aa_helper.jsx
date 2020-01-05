@@ -15,12 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem("user"));
         const routes = JSON.parse(localStorage.getItem("routes"));
         const token = localStorage.getItem("token");
-        // debugger
 
-        // const entities = {}
         const objRoutes = {}
         routes.forEach( route => {
-            // debugger
             objRoutes[route.id] = route
         })
 
@@ -34,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 isAuthenticated: true
             }
         }
-        // debugger
         store = configureStore(preloadedState)
         window.getState = store.getState;
         ReactDOM.render(<Root store={store}/>, root)
@@ -46,9 +42,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 })
-
-//     < !--{% if user.is_authenticated %}
-// <script type="text/javascript">
-//     window.currentUser
-//         </script>
-// {% end %} -->

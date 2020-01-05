@@ -1,35 +1,41 @@
 import React from "react";
 import {connect} from "react-redux"
 
-import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import { getFoodNearby } from "../../util/api_util";
 
 const mstp = state => ({
     office: state.entities.user.sf_office
 })
 
-const FoodMap = props => {
-    // debugger
-    const center = {
-        lat: props.office === true ? 37.7989708 : 40.7512857,
-        lng: props.office === true ? -122.4035405 : -73.9861788,
+class FoodMap extends React.Component {
+    constructor(props) {
+        super(props)
     }
 
-    const mapStyles = {
-        width: "600px",
-        height: "400px"
+    componentDidMount() {
+        this.renderMap()
+        // getFoodNearby(37.7989708, -122.4035405)
+        //     .then(res => console.log(res))
     }
 
-    return (
-        <Map
-            google={props.google}
-            zoom={12}
-            style={mapStyles}
-            initialCenter={center}
-        >
-        </Map>
-    )
+
+    renderMap() {
+        const center = {
+            lat: this.props.office === false ? 40.7512857 : 37.7989708,
+            lng: this.props.office === false ? -73.9861788 : -122.4035405,
+        }
+        const mapOptions = {
+            center: center,
+            zoom: 16
+        }
+        this.map = new google.maps.Map(this.mapNode, mapOptions)
+    }
+
+    render() {
+        return (
+            <div className="routes-map-container" ref={map => this.mapNode = map}></div>
+        )
+    }
 }
 
-export default connect(mstp, null)(GoogleApiWrapper({
-    apiKey: "AIzaSyAI3KS5AyUFYiAgV6Zzpj52R4OKX7z8Lkc"
-})(FoodMap))
+export default connect(mstp, null)(FoodMap)

@@ -15,42 +15,46 @@ class RoutesMap extends React.Component {
         super(props)
     }
 
-    initMap() {
-        // const directionsService = new google.maps.DirectionsService();
-        // const directionsRenderer = new google.maps.DirectionsRenderer();
+    componentDidMount() {
+        this.renderMap()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.id !== this.props.match.params.id) {
+            this.renderMap()
+        }
+    }
+
+    renderMap() {
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer();
         const center = {
             lat: (this.props.singleRoute.start_lat + this.props.singleRoute.end_lat) / 2,
             lng: (this.props.singleRoute.start_lon + this.props.singleRoute.end_lon) / 2
         }
-
         const mapOptions = {
             center: center,
             zoom: 10
         }
-
         this.map = new google.maps.Map(this.mapNode, mapOptions)
+
+        const request = {
+            origin: { lat: this.props.singleRoute.start_lat, lng: this.props.singleRoute.start_lon },
+            destination: { lat: this.props.singleRoute.end_lat, lng: this.props.singleRoute.end_lon },
+            travelMode: this.props.singleRoute.travel_mode
+        } 
+        directionsService.route(request, (result, status) => {
+            if (status === "OK") {
+                directionsRenderer.setDirections(result)
+            }
+        })
+        directionsRenderer.setMap(this.map)
     }
 
-    // componentDidMount() {
-    //     if (this.props.singleRoute) {
-    //         this.initMap()
-    //     }
-    // }
-
     render() {
-        if (!this.props.singleRoute) {
-            // return null;
-            return (
-                 <div id="routes-map" ref={map => this.mapNode = map}></div>
-            )
-        } 
-
-        this.initMap()
-        
         return (
             <div className="routes-map-container" ref={map => this.mapNode = map}></div>
         )
-
     }
 }
 
