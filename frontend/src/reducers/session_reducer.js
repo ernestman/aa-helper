@@ -1,4 +1,4 @@
-import {SESSION_CREATED, SESSION_DELETED, LOAD_USER} from "../actions/session_actions";
+import {SESSION_CREATED, SESSION_DELETED} from "../actions/session_actions";
 
 const initialState = {
     token: localStorage.getItem("token"),
@@ -12,15 +12,17 @@ const sessionReducer = (state=initialState, action) => {
     switch(action.type) {
         case SESSION_CREATED:
             localStorage.setItem("token", action.payload.data.token);
-            nextState["token"] = localStorage.getItem("token");
-            nextState["isAuthenticated"] = true;
-            return nextState;
-        case LOAD_USER:
+            localStorage.setItem("user", JSON.stringify(action.payload.data.user));
+            localStorage.setItem("routes", JSON.stringify(action.payload.data.routes));
+            
             nextState["token"] = localStorage.getItem("token");
             nextState["isAuthenticated"] = true;
             return nextState;
         case SESSION_DELETED:
             localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            localStorage.removeItem("routes");
+
             nextState["token"] = localStorage.getItem("token");
             nextState["isAuthenticated"] = false;
             return nextState;

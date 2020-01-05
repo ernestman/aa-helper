@@ -1,5 +1,5 @@
 import {CLEAR_ROUTES} from "../actions/route_actions";
-import {SESSION_CREATED, LOAD_USER} from "../actions/session_actions";
+import {SESSION_CREATED} from "../actions/session_actions";
 
 const routesReducer = (state={}, action) => {
     Object.freeze(state);
@@ -16,12 +16,6 @@ const routesReducer = (state={}, action) => {
             } else {
                 return state;
             }
-        case LOAD_USER:
-            let routes2 = action.payload.data.routes
-            routes2.forEach(route => {
-                nextState[route.id] = route
-            })
-            return nextState;
         case CLEAR_ROUTES:
             return {}
         default:

@@ -1,7 +1,6 @@
 import * as SessionUtil from "../util/session_api_util";
 
 export const SESSION_CREATED = "SESSION_CREATED";
-export const LOAD_USER = "LOAD_USER";
 export const SESSION_DELETED = "SESSION_DELETED";
 
 export const SESSION_ERRORS = "SESSION_ERRORS";
@@ -10,11 +9,6 @@ export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 
 export const createSession = payload => ({
     type: SESSION_CREATED,
-    payload: payload
-})
-
-export const loadUser = payload => ({
-    type: LOAD_USER,
     payload: payload
 })
 
@@ -54,13 +48,6 @@ export const loginUser = user => dispatch => (
         )
         .catch(
             errors => dispatch(sessionErrors(errors))
-        )
-)
-
-export const retrieveUser = () => dispatch => (
-    SessionUtil.getUser()
-        .then(
-            payload => dispatch(loadUser(payload))
         )
 )
 

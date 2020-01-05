@@ -20,10 +20,10 @@ class App extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
-        window.scrollTo(0, 0);
-        this.props.retrieveUser();
-    }
+    // componentDidMount() {
+    //     window.scrollTo(0, 0);
+    //     this.props.retrieveUser();
+    // }
 
     render() {
         return (

@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getUser = () => {
-    return axios.get("/user", tokenConfig(getState))
-}
+// export const getUser = () => {
+//     return axios.get("/user", tokenConfig(getState))
+// }
 
 export const register = user => {
     return axios.post("/register", user)
@@ -21,7 +21,7 @@ export const logout = () => {
 
 
 export const tokenConfig = getState => {
-    const token = getState().session.token
+    const token = getState().session.token || localStorage.getItem("token")
     const config = {
         headers: {
             "Content-Type": "application/json"
