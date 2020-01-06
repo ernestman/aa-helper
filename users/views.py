@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from knox.models import AuthToken
-from .util import routes_google_api
+from .util import routes_google_api, getYelpBusinesses
 
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 from routes.serializers import RouteSerializer

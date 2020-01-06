@@ -1,0 +1,48 @@
+.food-index-container {
+    border: 1px solid red;
+    width: 60%;
+}
+
+.food-item {
+    display: flex;
+    border: 1px solid purple;
+}
+
+.food-item-img  {
+    width: 210px;
+    height: 210px;
+    border-radius: 5px;;
+}
+
+.food-item-info {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid blue;
+    width: 100%;
+}
+
+.food-item-left {
+    border: 1px solid black;
+    width: 60%;
+    margin-left: 12px;
+}
+
+.food-link {
+    color: #0073bb;
+    font-weight: 500;
+}
+
+.food-link:hover {
+    text-decoration: underline;
+    text-decoration-color: #0073bb;
+}
+
+.food-item-right {
+    border: 1px solid pink;
+}
+
+.yelp-stars-img {
+    width: 88px;
+    height: 374px;
+    clip: rect(10px, 0px, 10px, 0px)
+}

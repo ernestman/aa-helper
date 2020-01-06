@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import RegisterAPIView, LoginAPIView, GetUserAPIView
+from .views import GetYelpAPIView
 from knox.views import LogoutView
 
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
     path("register", RegisterAPIView.as_view()),
     path("login", LoginAPIView.as_view()),
     path("logout", LogoutView.as_view(), name="knox-logout"),
+    path("yelp", GetYelpAPIView.as_view())
 ]

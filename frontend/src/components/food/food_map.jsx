@@ -1,8 +1,6 @@
 import React from "react";
 import {connect} from "react-redux"
 
-import { getFoodNearby } from "../../util/api_util";
-
 const mstp = state => ({
     office: state.entities.user.sf_office
 })
@@ -14,8 +12,6 @@ class FoodMap extends React.Component {
 
     componentDidMount() {
         this.renderMap()
-        // getFoodNearby(37.7989708, -122.4035405)
-        //     .then(res => console.log(res))
     }
 
 
@@ -26,14 +22,14 @@ class FoodMap extends React.Component {
         }
         const mapOptions = {
             center: center,
-            zoom: 16
+            zoom: 15
         }
         this.map = new google.maps.Map(this.mapNode, mapOptions)
     }
 
     render() {
         return (
-            <div className="routes-map-container" ref={map => this.mapNode = map}></div>
+            <div className="food-map-container" ref={map => this.mapNode = map}></div>
         )
     }
 }

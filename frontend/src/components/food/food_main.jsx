@@ -1,25 +1,21 @@
 import React from "react";
+import {connect} from "react-redux";
 import FoodMap from "./food_map";
+import FoodIndex from "./food_index";
 
-import {getFoodNearby} from "../../util/api_util";
+// const mstp = state => ({
+//     businesses: state.entities.businesses
+// })
 
-// class FoodMain extends React.Component {
-//     constructor(props) {
-//         super(props)
-//     }
-
-//     componentDidMount() {
-
-//     }
-// }
-
-const FoodMain = () => {
+const FoodMain = (props) => {
+    // const {businesses} = props;
     return (
-        <div>
-            <h1>Food Component</h1>
+        <div className="food-main-container">
+            <FoodIndex/>
             <FoodMap/>
         </div>
     )
 }
 
+// export default connect(mstp, null)(FoodMain);
 export default FoodMain;

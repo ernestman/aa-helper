@@ -6,7 +6,6 @@ const RoutesIndex = props => {
     const myRoutes = props.routes.map( (route, i) => (
             <RouteItem
                 key={i}
-                num={i + 1}
                 route={route}
             />
     ))

@@ -5,7 +5,7 @@ import RegisterContainer from "./components/session/register_container";
 import LoginContainer from "./components/session/login_container";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import RoutesMainContainer from "./components/routes/routes_container";
+import RoutesMain from "./components/routes/routes_main";
 import FoodMain from "./components/food/food_main";
 
 
@@ -22,7 +22,7 @@ const App = props => {
                     <Route path="/register" component={RegisterContainer} />
                     <Route path="/login" component={LoginContainer} />
                     <Route path="/food" component={FoodMain} />
-                    <Route path="/routes" component={RoutesMainContainer} />
+                    <Route path="/routes" component={RoutesMain} />
                 </Switch>
             </main>
 

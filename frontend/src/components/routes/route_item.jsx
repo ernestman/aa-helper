@@ -7,7 +7,6 @@ class RouteItem extends React.Component {
         
         this.clickRouteHandler = this.clickRouteHandler.bind(this);
     }
-
     
     clickRouteHandler(event) {
         event.preventDefault();
@@ -66,51 +65,3 @@ class RouteItem extends React.Component {
 }
 
 export default withRouter(RouteItem);
-
-    // this.state = {
-    //     startCity: "",
-    //     endCity: "",
-    //     distance: "",
-    //     time: ""
-    // }
-
-    // this.clickRouteHandler = this.clickRouteHandler.bind(this);
-    // this.handleGeocode = this.handleGeocode.bind(this);
-    // this.handleDirections = this.handleDirections.bind(this);
-// }
-
-    // componentDidMount() {
-    //     const {start_lat, start_lon, end_lat, end_lon, travel_mode} = this.props.route;
-
-        // reverseGeocode(start_lat, start_lon) //start city
-        //     .then(
-                // res => this.handleGeocode(res, "startCity")
-            // )
-        // reverseGeocode(end_lat, end_lon) //end city
-        //     .then(
-        //         res => this.handleGeocode(res, "endCity")
-        //     )
-
-        // getDirections(
-        //     {lat: start_lat, lng: start_lon}, //origin
-        //     {lat: end_lat, lng: end_lon},
-        //     travel_mode
-        // ).then(
-        //     // res => this.handleDirections(res)
-        // )
-    // }
-
-    // handleGeocode(res, cityState) {
-    //     let formatted = res.filter( item => (
-    //         item.address_components.length === 4
-    //     ))[0].formatted_address.slice(0, -5)
-
-    //     this.setState({[cityState]: formatted})
-    // }
-
-    // handleDirections(res) {
-    //     let result = res.routes[0].legs[0]
-
-    //     this.setState({"distance": result.distance.text})
-    //     this.setState({"time": result.duration.text})
-    // }

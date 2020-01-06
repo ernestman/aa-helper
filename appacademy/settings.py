@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 
     'users',
     'routes',
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'knox',
-    'corsheaders'
 ]
 
 REST_FRAMEWORK = {
@@ -73,20 +73,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# MIDDLEWARE_CLASSES = (
-#     'corsheaders.middleware.CorsMiddleware',
-#     'django.middleware.common.CommonMiddleware'
-# )
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    'Access-Control-Allow-Origin',
-]
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8000',
-]
+# CORS_ALLOW_HEADERS = list(default_headers) + [
+#     'Access-Control-Allow-Origin',
+# ]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:8000',
+# ]
 # CORS_ORIGIN_REGEX_WHITELIST = [
 #     'http://localhost:8000',
 # ]

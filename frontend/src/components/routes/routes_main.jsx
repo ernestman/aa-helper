@@ -1,9 +1,16 @@
 import React from "react";
+import {connect} from "react-redux";
 import {Route, Switch, withRouter} from "react-router-dom";
 import RoutesIndex from "./routes_index";
 import RoutesMap from "./routes_map";
 
 import MapDefault from "./map_default";
+
+const mstp = (state) => {
+    return {
+        routes: Object.values(state.entities.routes)
+    }
+}
 
 const RoutesMain = props => {
     const {routes} = props;
@@ -23,4 +30,4 @@ const RoutesMain = props => {
     )
 }
 
-export default withRouter(RoutesMain);
+export default withRouter(connect(mstp, null)(RoutesMain));
