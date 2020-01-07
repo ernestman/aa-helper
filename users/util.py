@@ -33,7 +33,7 @@ def getYelpBusinesses(lat, lng):
         "latitude": lat,
         "longitude": lng,
         "limit": 15,
-        "sort_by": "distance"
+        # "sort_by": "distance"
     }
     response = requests.get(
         url=yelp_url,
@@ -56,7 +56,7 @@ def getYelpBusinesses(lat, lng):
         business_obj["review_count"] = bus["review_count"]
         business_obj["categories"] = categories
         business_obj["rating"] = bus["rating"]
-        # business_obj["price"] = bus["price"] if bus["price"] else ""
+        business_obj["price"] = bus["price"]
         business_obj["display_address"] = display_address[0]
         business_obj["display_phone"] = bus["display_phone"]
         business_obj["distance"] = bus["distance"]

@@ -8,7 +8,7 @@ class BusinessSerializer(serializers.Serializer):
     review_count = serializers.IntegerField(read_only=True)
     categories = serializers.CharField(read_only=True)
     rating = serializers.FloatField(read_only=True)
-    # price = serializers.CharField(read_only=True)
+    price = serializers.CharField(read_only=True)
     display_address = serializers.CharField(read_only=True)
     display_phone = serializers.CharField(read_only=True)
     distance = serializers.FloatField(read_only=True)
