@@ -12,6 +12,7 @@ import stars1 from "../../../images/yelpstars1.png";
 const FoodItem = (props) => {
     const business = props.business;
     const num = props.num;
+    const distance = (business.distance * 0.000621).toFixed(1);
 
     const stars = (function(rating) {
         switch(rating) {
@@ -56,6 +57,7 @@ const FoodItem = (props) => {
                 <div className="food-item-right">
                     <p className="food-item-p">{business.display_phone}</p>
                     <p className="food-item-p">{business.display_address}</p>
+                    <p className="food-item-p">{distance + " mi"}</p>
                 </div>
             </div>
         </div>

@@ -1,11 +1,13 @@
 .food-index-container {
-    border: 1px solid red;
+    // border: 1px solid red;
     width: 60%;
 }
 
 .food-item {
     display: flex;
-    border: 1px solid purple;
+    // border: 1px solid purple;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 18px 0;
 }
 
 .food-item-img  {
@@ -17,12 +19,12 @@
 .food-item-info {
     display: flex;
     justify-content: space-between;
-    border: 1px solid blue;
+    // border: 1px solid blue;
     width: 100%;
 }
 
 .food-item-left {
-    border: 1px solid black;
+    // border: 1px solid black;
     // width: 60%;
     display: flex;
     flex-direction: column;
@@ -56,7 +58,12 @@
 }
 
 .food-item-right {
-    border: 1px solid pink;
+    // border: 1px solid pink;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    // height: 40%;
+    align-content: flex-end;
 }
 
 .stars-img {
