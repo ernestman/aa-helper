@@ -1,5 +1,6 @@
 import React from "react";
 import RouteItem from "./route_item";
+import PlusIcon from "../../../images/plus_icon.svg";
 
 const RoutesIndex = props => {
 
@@ -12,7 +13,13 @@ const RoutesIndex = props => {
 
     return (
         <div className="routes-index-container">
-            <h2 className="routes-index-header">My Routes</h2>
+            <div className="routes-index-top">
+                <h2 className="routes-index-header">My Routes</h2>
+                <div className="new-route-btn">
+                    <img id="plus-icon" src={PlusIcon}/>
+                    <p id="plus-icon-txt">New Route</p>
+                </div>
+            </div>
             <div className="routes-index">
                 {myRoutes}
             </div>

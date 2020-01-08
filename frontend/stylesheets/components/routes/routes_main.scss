@@ -26,10 +26,34 @@
 
 .routes-index {
     overflow: scroll;
-    height: 88%;
+    height: 82%;
+}
+
+.routes-index-top {
+    display: flex;
+    border: 1px solid pink;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .routes-index-header {
-    margin-bottom: 8px;
+    margin: 18px 0;
 }
 
+.new-route-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid blue;
+    cursor: pointer;
+}
+
+#plus-icon {
+    height: 50px;
+    width: 50px;
+    // border: 1px solid yellow;
+}
+
+#plus-icon-txt {
+    font-size: 12px;
+}

@@ -42,7 +42,7 @@ class FoodIndex extends React.Component {
 
         return (
             <div className="food-index-container">
-                <h3>All Results</h3>
+                <h3 className="food-index-header">Food & Restaurants Nearby</h3>
                 <div className="food-index">
                     {businessResults}
                 </div>
