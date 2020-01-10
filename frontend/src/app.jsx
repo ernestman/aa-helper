@@ -7,11 +7,13 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import RoutesMain from "./components/routes/routes_main";
 import FoodMain from "./components/food/food_main";
+import Modal from "./components/modal";
 
 
 const App = props => {
     return (
         <div>
+            <Modal />
             <header>
                 <Header />
             </header>

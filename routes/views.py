@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
+from users.util import routes_google_api
 from .serializers import RouteSerializer
 from .models import Route
 from users.models import User
@@ -18,7 +19,9 @@ class CreateRouteAPIView(APIView):
             travel_mode=request.data["travel_mode"],
             user = request.user  
         )
-        serializer = RouteSerializer(new_route)
+        routes_api_request = routes_google_api([new_route])[0]
+
+        serializer = RouteSerializer(routes_api_request)
         return Response(serializer.data)
 
 class IndexRouteAPIView(APIView):

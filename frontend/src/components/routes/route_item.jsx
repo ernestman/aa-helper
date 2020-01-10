@@ -25,7 +25,7 @@ class RouteItem extends React.Component {
                 case "BICYCLING":
                     return <i className="fas fa-biking fa-lg"></i>
                 case "WALKING":
-                    return <i class="fas fa-walking fa-lg"></i>
+                    return <i className="fas fa-walking fa-lg"></i>
                 default:
                     return <i className="fas fa-directions fa-lg"></i>
             }

@@ -1,6 +1,4 @@
 .routes-main-container {
-
-    border: 3px solid green;
     height: 500px;
 }
 
@@ -16,10 +14,6 @@
 
 
 .routes-index-container {
-    // border: 1px solid purple;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
     width: 25%;
     height: 100%;
 }
@@ -31,7 +25,6 @@
 
 .routes-index-top {
     display: flex;
-    border: 1px solid pink;
     justify-content: space-between;
     align-items: center;
 }
@@ -44,16 +37,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid blue;
-    cursor: pointer;
+    margin-right: 20px;
 }
 
 #plus-icon {
     height: 50px;
     width: 50px;
-    // border: 1px solid yellow;
+    border-radius: 50%;
+    margin-bottom: 2px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#plus-icon:hover {
+    background-color: #f0f0f0;
 }
 
 #plus-icon-txt {
     font-size: 12px;
+}
+
+.route-form-container {
+    width: 600px;
 }

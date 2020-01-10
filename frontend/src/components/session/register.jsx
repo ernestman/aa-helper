@@ -45,53 +45,55 @@ class Register extends React.Component {
 
     render() {
         return (
-            <div className="sessions-container">
-                <h1 className="session-header">Sign Up</h1>
-                <form className="session-form" onSubmit={this.handleRegister}>
-                    <div className="register-form-top">
-                        <div className="register-form-input">
-                            <p className="register-form-label">Email</p>
-                            <input
-                                className="session-form-input"
-                                type="text"
-                                value={this.state.email}
-                                placeholder="name@company.com"
-                                onChange={this.handleInput("email")}
-                            />
+            <div className="session-container">
+                <div className="sessions-container">
+                    <h1 className="session-header">Sign Up</h1>
+                    <form className="session-form" onSubmit={this.handleRegister}>
+                        <div className="register-form-top">
+                            <div className="register-form-input">
+                                <p className="register-form-label">Email</p>
+                                <input
+                                    className="session-form-input"
+                                    type="text"
+                                    value={this.state.email}
+                                    placeholder="name@company.com"
+                                    onChange={this.handleInput("email")}
+                                />
+                            </div>
+
+                            <div className="register-form-input">
+                                <p className="register-form-label">a/A Office</p>
+                                <select className="session-form-input" value={this.state.sf_office} onChange={this.handleInput("sf_office")}>
+                                    <option value="sf">San Francisco</option>
+                                    <option value="ny">New York</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div className="register-form-input">
-                            <p className="register-form-label">a/A Office</p>
-                            <select className="session-form-input" value={this.state.sf_office} onChange={this.handleInput("sf_office")}>
-                                <option value="sf">San Francisco</option>
-                                <option value="ny">New York</option>
-                            </select>
-                        </div>
+                        <p className="session-form-label">Password</p>
+                        <input
+                            className="session-form-input"
+                            type="password"
+                            value={this.state.password}
+                            placeholder="Password"
+                            onChange={this.handleInput("password")}
+                        />
+
+                        <p className="session-form-label">Confirm Password</p>
+                        <input
+                            className="session-form-input"
+                            type="password"
+                            value={this.state.password2}
+                            placeholder="Confirm password"
+                            onChange={this.handleInput("password2")}
+                        />
+
+                        <button className="form-btn">Sign up</button>
+                    </form>
+                    <div className="form-redirect">
+                        <p>Already have an account?</p>&nbsp;
+                        <Link to="/login">Log in</Link>
                     </div>
-
-                    <p className="session-form-label">Password</p>
-                    <input
-                        className="session-form-input"
-                        type="password"
-                        value={this.state.password}
-                        placeholder="Password"
-                        onChange={this.handleInput("password")}
-                    />
-
-                    <p className="session-form-label">Confirm Password</p>
-                    <input
-                        className="session-form-input"
-                        type="password"
-                        value={this.state.password2}
-                        placeholder="Confirm password"
-                        onChange={this.handleInput("password2")}
-                    />
-
-                    <button className="form-btn">Sign up</button>
-                </form>
-                <div className="form-redirect">
-                    <p>Already have an account?</p>&nbsp;
-                    <Link to="/login">Log in</Link>
                 </div>
             </div>
         )

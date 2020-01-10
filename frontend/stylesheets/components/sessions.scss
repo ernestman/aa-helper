@@ -1,16 +1,19 @@
-.sessions-container {
+.session-container {
+    width: 60%;
     margin: 0 auto;
+}
+
+.sessions-container {
     border: 1px solid black;
-    height: 500px;
-    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 100px;
-    // justify-content: space-around;
+    padding: 34px 100px;
+    background-color: #FFFFFF;
 }
 
 .register-form-top {
+    margin-top: 12px;
     display: flex;
     justify-content: space-between;
 
@@ -31,7 +34,8 @@
 }
 
 .session-header {
-    margin-bottom: 30px;
+    margin-bottom: 14px;
+    line-height: 32px;
 }
 
 .session-form-label {

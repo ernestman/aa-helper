@@ -1,4 +1,4 @@
-import {CLEAR_ROUTES} from "../actions/route_actions";
+import {GET_ROUTE, CLEAR_ROUTES} from "../actions/route_actions";
 import {SESSION_CREATED} from "../actions/session_actions";
 
 const routesReducer = (state={}, action) => {
@@ -16,6 +16,9 @@ const routesReducer = (state={}, action) => {
             } else {
                 return state;
             }
+        case GET_ROUTE:
+            nextState[action.route.data.id] = action.route.data
+            return nextState;
         case CLEAR_ROUTES:
             return {}
         default:
