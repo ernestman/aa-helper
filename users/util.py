@@ -12,14 +12,6 @@ gmaps = googlemaps.Client(key=GOOGLE_API_KEY)
 
 def routes_google_api(query_set):
     for route in query_set:
-        if route.name == "drive to aa":
-            print(route.name)
-            print(route.start_lat)
-            print(route.start_lon)
-            print(route.travel_mode)
-            print(route.end_lat)
-            print(route.end_lon)
-            
         time.sleep(0.28)
         start_geocode = gmaps.reverse_geocode((route.start_lat, route.start_lon))
         end_geocode = gmaps.reverse_geocode((route.end_lat, route.end_lon))
