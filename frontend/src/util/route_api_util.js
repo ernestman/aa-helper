@@ -8,3 +8,7 @@ export const getRoutes = () => {
 export const createRoute = route => {
     return axios.post("/routes/create", route, tokenConfig(getState))
 }
+
+export const deleteRoute = routeId => {
+    return axios.delete(`/routes/delete/${routeId}`, tokenConfig(getState))
+}

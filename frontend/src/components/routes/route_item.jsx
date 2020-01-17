@@ -6,11 +6,16 @@ class RouteItem extends React.Component {
         super(props)
         
         this.clickRouteHandler = this.clickRouteHandler.bind(this);
+        this.deleteHandler = this.deleteHandler.bind(this);
     }
     
     clickRouteHandler(event) {
         event.preventDefault();
         this.props.history.push(`/routes/${this.props.route.id}`)
+    }
+
+    deleteHandler(event) {
+        event.preventDefault();
     }
 
     render() {
@@ -33,9 +38,12 @@ class RouteItem extends React.Component {
 
         return (
             <div className="route-item" onClick={this.clickRouteHandler}>
-                <div className="route-name">
-                    <i className="fas fa-route"></i>
-                    <h3>{route.name}</h3>
+                <div className="route-top">
+                    <div className="route-name">
+                        <i id="route-icon" className="fas fa-route"></i>
+                        <h3>{route.name}</h3>
+                    </div>
+                    <i id="delete-icon" className="far fa-trash-alt fa-lg"></i>
                 </div>
                 <div className="route-city">
                     <div className="route-loc">
