@@ -14,6 +14,7 @@ const RoutesIndex = props => {
             <RouteItem
                 key={i}
                 route={route}
+                deleteRoute={props.deleteRoute}
             />
     ))
 

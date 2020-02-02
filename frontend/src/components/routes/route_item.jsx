@@ -15,7 +15,8 @@ class RouteItem extends React.Component {
     }
 
     deleteHandler(event) {
-        event.preventDefault();
+        event.stopPropagation()
+        this.props.deleteRoute(this.props.route.id)
     }
 
     render() {
@@ -43,7 +44,7 @@ class RouteItem extends React.Component {
                         <i id="route-icon" className="fas fa-route"></i>
                         <h3>{route.name}</h3>
                     </div>
-                    <i id="delete-icon" className="far fa-trash-alt fa-lg"></i>
+                    <i id="delete-icon" className="far fa-trash-alt fa-lg" onClick={this.deleteHandler}></i>
                 </div>
                 <div className="route-city">
                     <div className="route-loc">
