@@ -6,6 +6,7 @@ import '../stylesheets/main.scss';
 
 import {getUser} from "./util/session_api_util";
 
+// need to find a way to fetch then set as preloaded state
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById("root");
