@@ -27,8 +27,10 @@ dependencies:
     - cryptography==2.8
     - defusedxml==0.6.0
     - django==2.2.7
+    - django-cors-headers==3.2.1
     - django-rest-knox==4.1.0
     - djangorestframework==3.10.3
+    - googlemaps==4.0.0
     - idna==2.8
     - isort==4.3.21
     - lazy-object-proxy==1.4.3
