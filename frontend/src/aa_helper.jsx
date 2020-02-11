@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const routes = JSON.parse(localStorage.getItem("routes"));
         const token = localStorage.getItem("token");
 
+        // debugger
+
         const objRoutes = {}
         routes.forEach( route => {
             objRoutes[route.id] = route
@@ -25,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const preloadedState = {
             entities: {
                 user: user,
+                // routes: routes
                 routes: objRoutes
             },
             session: {
@@ -32,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 isAuthenticated: true
             }
         }
+
+        debugger
+
         store = configureStore(preloadedState)
         window.getState = store.getState;
         ReactDOM.render(<Root store={store}/>, root)
