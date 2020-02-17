@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const routes = JSON.parse(localStorage.getItem("routes"));
         const token = localStorage.getItem("token");
 
-        // debugger
-
         const objRoutes = {}
         routes.forEach( route => {
             objRoutes[route.id] = route
@@ -35,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 isAuthenticated: true
             }
         }
-
-        debugger
 
         store = configureStore(preloadedState)
         window.getState = store.getState;

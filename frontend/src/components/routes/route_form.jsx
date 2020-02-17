@@ -1,4 +1,5 @@
 import React from "react";
+import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {createRoute} from "../../actions/route_actions";
 import {closeModal} from "../../actions/modal_actions";
@@ -83,7 +84,8 @@ class RouteForm extends React.Component {
             end_lon: this.state.endLon
         }
         this.props.createRoute(newRoute)
-            .then(() => this.props.closeModal())
+            .then(res => this.props.history.push(`/routes/${res.route.data.id}`))
+        this.props.closeModal()
     }
 
     handleInput(inputType) {
@@ -149,4 +151,4 @@ class RouteForm extends React.Component {
     }
 }
 
-export default connect(null, mdtp)(RouteForm);
+export default withRouter(connect(null, mdtp)(RouteForm));

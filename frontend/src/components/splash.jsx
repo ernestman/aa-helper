@@ -59,7 +59,7 @@ const Splash = (props) => {
                 <div className="feature-container">
                     <div className="feature-info">
                         <h2>Routes Feature</h2>
-                        <p className="splash-text">See public transportation times and schedules as well as directions for your routes to and from the a/A office</p>
+                        <p className="splash-text">See public transportation times and schedules as well as directions for your routes to and from the App Academy office</p>
                     </div>
                 </div>
             </div>

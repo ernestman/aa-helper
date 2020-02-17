@@ -19,7 +19,6 @@ const routesReducer = (state={}, action) => {
         case GET_ROUTE:
             nextState[action.route.data.id] = action.route.data
             localStorage.setItem("routes", JSON.stringify(Object.values(nextState)));
-            debugger
             return nextState;
         case REMOVE_ROUTE:
             delete nextState[action.routeId]

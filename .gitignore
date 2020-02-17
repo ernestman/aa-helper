@@ -127,3 +127,4 @@ bundle.js
 # conda env export > environment_droplet.yml
 
 
+package-lock.json
