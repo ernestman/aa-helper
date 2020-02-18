@@ -7,6 +7,7 @@ import {openModal} from "../../actions/modal_actions";
 import {deleteRoute} from "../../actions/route_actions";
 
 import MapDefault from "./map_default";
+import RouteMainInfo from "./route_info_main";
 
 const mstp = state => ({
     routes: Object.values(state.entities.routes)
@@ -30,7 +31,9 @@ const RoutesMain = props => {
 
                 <RoutesIndex routes={routes} openModal={openModal} deleteRoute={deleteRoute}/>
             </div>
-
+            <div className="routes-main-api-info-container">
+                <RouteMainInfo />
+            </div>
         </div>
     )
 }
