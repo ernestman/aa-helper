@@ -18,9 +18,15 @@ class RouteMainInfo extends React.Component {
 
     render() {
 
+        const directions = this.props.singleRoute.directions.map( (dir, i) => (
+            <li key={i}>{dir}</li>
+        ))
+
         return (
             <div className="routes-main-api-info">
                 <h1>Routes Main API info</h1>
+                <h2>Directions</h2>
+                {directions}
             </div>
         )
     }

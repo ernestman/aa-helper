@@ -18,6 +18,12 @@ const mdtp = dispatch => ({
     deleteRoute: (routeId) => dispatch(deleteRoute(routeId))
 })
 
+const NoDirections = () => {
+    return (
+        <h1>Create a route for Directions</h1>
+    )
+}
+
 const RoutesMain = props => {
     const {routes, openModal, deleteRoute} = props;
     return (
@@ -32,7 +38,11 @@ const RoutesMain = props => {
                 <RoutesIndex routes={routes} openModal={openModal} deleteRoute={deleteRoute}/>
             </div>
             <div className="routes-main-api-info-container">
-                <RouteMainInfo />
+                <Switch>
+                    <Route exact path={props.match.path} component={NoDirections} />
+                    <Route path={`${props.match.path}/:id`} component={RouteMainInfo} />
+                </Switch>
+                {/* <RouteMainInfo /> */}
             </div>
         </div>
     )
