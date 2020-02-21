@@ -18,6 +18,11 @@ class RouteMainInfo extends React.Component {
 
     render() {
 
+        const test = this.props.singleRoute.directions[0];
+        const testdiv = document.createElement('DIV');
+        testdiv.innerHTML = test;
+        console.log(testdiv);
+
         const directions = this.props.singleRoute.directions.map( (dir, i) => (
             <li key={i}>{dir}</li>
         ))

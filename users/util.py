@@ -24,10 +24,7 @@ def routes_google_api(query_set):
         route.end_city = list(filter(lambda item: len(item["address_components"]) == 4, end_geocode))[0]["formatted_address"][0:-5]
         route.time = directions["duration"]["text"]
         route.distance = directions["distance"]["text"]
-
         route.directions = map(lambda step: step["html_instructions"], directions["steps"])
-        # for dir in directions["steps"]:
-        #     print(dir["html_instructions"])
 
     return query_set
 
