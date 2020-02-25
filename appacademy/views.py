@@ -13,3 +13,5 @@ class GetYelpAPIView(APIView):
         return Response({
             "businesses": business_serializer.data
         })
+
+# change getYelpBusinesses util call
