@@ -26,11 +26,16 @@ class Login extends React.Component {
         const user = Object.assign({}, this.state)
         this.props.loginUser(user)
             .then(
-                () => this.props.history.push("/")
+                res => {
+                    if (res.payload) this.props.history.push("/")
+                }
             )
     }
 
     render() {
+
+        const emailErrors = this.props.errors.email;
+        const passErrors = this.props.errors.password;
 
         return (
             <div className="session-container">
@@ -46,6 +51,8 @@ class Login extends React.Component {
                             onChange={this.handleInput("email")}
                         />
 
+                        <ul className="errors-ele">{emailErrors}</ul>
+
                         <p className="session-form-label">Password</p>
                         <input
                             className="session-form-input"
@@ -54,6 +61,8 @@ class Login extends React.Component {
                             placeholder="Password"
                             onChange={this.handleInput("password")}
                         />
+
+                        <ul className="errors-ele">{passErrors}</ul>
 
                         <button className="form-btn">Log in</button>
                     </form>

@@ -37,7 +37,7 @@ export const registerUser = user => dispatch => (
             payload => dispatch(createSession(payload))
         )
         .catch(
-            errors => dispatch(sessionErrors(errors))
+            errors => dispatch(sessionErrors(errors.response.data))
         )
 )
 
@@ -47,8 +47,7 @@ export const loginUser = user => dispatch => (
             payload => dispatch(createSession(payload))
         )
         .catch(
-            errors => console.log(errors.response.data)
-            // errors => dispatch(sessionErrors(errors))
+            errors => dispatch(sessionErrors(errors.response.data))
         )
 )
 

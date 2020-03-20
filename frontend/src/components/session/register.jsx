@@ -33,7 +33,9 @@ class Register extends React.Component {
         if (this.state.password === this.state.password2) {
             this.props.registerUser(newUser)
                 .then(
-                    () => this.props.history.push("/")
+                    res => {
+                        if (res.payload) this.props.history.push("/")
+                    }
                 )
         } else {
             let errors = {
@@ -44,6 +46,10 @@ class Register extends React.Component {
     }
 
     render() {
+
+        const emailErrors = this.props.errors.email
+        const passErrors = this.props.errors.password
+
         return (
             <div className="session-container">
                 <div className="sessions-container">
@@ -70,6 +76,8 @@ class Register extends React.Component {
                             </div>
                         </div>
 
+                        <ul className="errors-ele">{emailErrors}</ul>
+
                         <p className="session-form-label">Password</p>
                         <input
                             className="session-form-input"
@@ -78,6 +86,8 @@ class Register extends React.Component {
                             placeholder="Password"
                             onChange={this.handleInput("password")}
                         />
+
+                        <ul className="errors-ele">{passErrors}</ul>
 
                         <p className="session-form-label">Confirm Password</p>
                         <input

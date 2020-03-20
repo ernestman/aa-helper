@@ -2,11 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate
 from .models import User
 
-class UserSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    email = serializers.EmailField(read_only=True)
-    sf_office = serializers.BooleanField(read_only=True)
-    date_joined = serializers.DateTimeField(read_only=True)
+from rest_framework.response import Response
+from rest_framework import status
 
 class RegisterSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -33,4 +30,6 @@ class LoginSerializer(serializers.Serializer):
         )
         if user and user.is_active:
             return user
-        raise serializers.ValidationError("Incorrect Credentials")
+        else:
+            raise serializers.ValidationError({"email": "Incorrect Credentials"})
+

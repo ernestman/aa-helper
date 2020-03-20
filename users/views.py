@@ -6,7 +6,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from knox.models import AuthToken
 from .util import routes_google_api, getYelpBusinesses
 
-from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
+from .serializers import RegisterSerializer, LoginSerializer
 from routes.serializers import RouteSerializer
 from .models import User
 
@@ -18,7 +18,7 @@ class RegisterAPIView(APIView):
         try:
             user = User.objects.get(email=email)
             return Response({
-                "email": "Email has already been taken"
+                "email": ["Email has already been taken"]
             }, status=status.HTTP_400_BAD_REQUEST)
 
         except:
@@ -46,20 +46,3 @@ class LoginAPIView(APIView):
             "routes": routes_serializer.data,
             "token": AuthToken.objects.create(user)[1]
         })
-
-class GetUserAPIView(APIView):
-    permission_classes = [IsAuthenticated]
-    def get(self, request):
-        user = request.user
-        user_serializer = UserSerializer(user)
-
-        routes = User.objects.get(id=request.user.id).routes.all()
-        routes_api_request = routes_google_api(routes)
-            
-
-        routes_serializer = RouteSerializer(routes_api_request, many=True)
-        return Response({
-            "user": user_serializer.data,
-            "routes": routes_serializer.data
-        })
-

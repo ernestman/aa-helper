@@ -9,7 +9,7 @@ const sessionErrorsReducer = (state={}, action) => {
 
     switch(action.type) {
         case SESSION_ERRORS:
-            return action.errors.response.data
+            return action.errors
         case CUSTOM_SESSION_ERRORS:
             return action.errors
         case CLEAR_SESSION_ERRORS:
