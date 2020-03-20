@@ -47,7 +47,8 @@ export const loginUser = user => dispatch => (
             payload => dispatch(createSession(payload))
         )
         .catch(
-            errors => dispatch(sessionErrors(errors))
+            errors => console.log(errors.response.data)
+            // errors => dispatch(sessionErrors(errors))
         )
 )
 

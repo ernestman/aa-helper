@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from knox.models import AuthToken
@@ -12,13 +13,22 @@ from .models import User
 class RegisterAPIView(APIView):
     permission_classes = [AllowAny]
     def post(self, request):
-        serializer = RegisterSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save() # creates new instance of serializer or updates serializer (ONLY create/update)
-        return Response({
-            "user": serializer.data,
-            "token": AuthToken.objects.create(user)[1]
-        })
+
+        email = request.data["email"]
+        try:
+            user = User.objects.get(email=email)
+            return Response({
+                "email": "Email has already been taken"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        except:
+            serializer = RegisterSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            user = serializer.save() # creates new instance of serializer or updates serializer (ONLY create/update)
+            return Response({
+                "user": serializer.data,
+                "token": AuthToken.objects.create(user)[1]
+            })
 
 class LoginAPIView(APIView):
     permission_classes = [AllowAny]
