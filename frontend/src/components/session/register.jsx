@@ -1,113 +1,106 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {withRouter, Link} from "react-router-dom";
 
-class Register extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            email: "",
-            sf_office: "sf",
-            password: "",
-            password2: ""
-        }
-        this.handleRegister = this.handleRegister.bind(this);
-    }
+const Register = (props) => {
+    const [email, setEmail] = useState("")
+    const [sfOffice, setOffice] = useState("sf")
+    const [password, setPassword] = useState("")
+    const [password2, setPassword2] = useState("")
 
-    componentWillUnmount() {
-        this.props.clearSessionErrors()
-    }
+    const handleEmail = (e) => { setEmail(e.target.value) }
+    const handleOffice = (e) => { setOffice(e.target.value) }
+    const handlePassword = (e) => { setPassword(e.target.value) }
+    const handlePassword2 = (e) => { setPassword2(e.target.value) }
 
-    handleInput(inputType) {
-        return (event) => {
-            this.setState({ [inputType]: event.target.value })
-        }
-    }
-
-    handleRegister(event) {
-        event.preventDefault();
+    const handleRegister = (e) => {
+        e.preventDefault();
         const newUser = {
-            email: this.state.email,
-            password: this.state.password,
-            sf_office: this.state.sf_office === "sf" ? true : false
+            email: email,
+            sf_office: sfOffice,
+            password: password,
+            password2: password2
         }
-        if (this.state.password === this.state.password2) {
-            this.props.registerUser(newUser)
+        if (password === password2) {
+            props.registerUser(newUser)
                 .then(
                     res => {
-                        if (res.payload) this.props.history.push("/")
+                        if (res.payload) props.history.push("/")
                     }
                 )
         } else {
             let errors = {
                 password: ["Passwords do not match"]
             }
-            this.props.customSessionErrors(errors)
+            props.customSessionErrors(errors)
         }
     }
 
-    render() {
+    useEffect( () => {
+        return function cleanup() {
+            props.clearSessionErrors()
+        }
+    }, []);
 
-        const emailErrors = this.props.errors.email
-        const passErrors = this.props.errors.password
+    const emailErrors = props.errors.email;
+    const passwordErrors = props.errors.password;
 
-        return (
-            <div className="session-container">
-                <div className="sessions-container">
-                    <h1 className="session-header">Sign Up</h1>
-                    <form className="session-form" onSubmit={this.handleRegister}>
-                        <div className="register-form-top">
-                            <div className="register-form-input">
-                                <p className="register-form-label">Email</p>
-                                <input
-                                    className="session-form-input"
-                                    type="text"
-                                    value={this.state.email}
-                                    placeholder="name@company.com"
-                                    onChange={this.handleInput("email")}
-                                />
-                            </div>
-
-                            <div className="register-form-input">
-                                <p className="register-form-label">a/A Office</p>
-                                <select className="session-form-input" value={this.state.sf_office} onChange={this.handleInput("sf_office")}>
-                                    <option value="sf">San Francisco</option>
-                                    <option value="ny">New York</option>
-                                </select>
-                            </div>
+    return (
+        <div className="session-container">
+            <div className="sessions-container">
+                <h1 className="session-header">Sign Up</h1>
+                <form className="session-form" onSubmit={handleRegister}>
+                    <div className="register-form-top">
+                        <div className="register-form-input">
+                            <p className="register-form-label">Email</p>
+                            <input
+                                className="session-form-input"
+                                type="text"
+                                value={email}
+                                placeholder="name@company.com"
+                                onChange={handleEmail}
+                            />
                         </div>
 
-                        <ul className="errors-ele">{emailErrors}</ul>
-
-                        <p className="session-form-label">Password</p>
-                        <input
-                            className="session-form-input"
-                            type="password"
-                            value={this.state.password}
-                            placeholder="Password"
-                            onChange={this.handleInput("password")}
-                        />
-
-                        <ul className="errors-ele">{passErrors}</ul>
-
-                        <p className="session-form-label">Confirm Password</p>
-                        <input
-                            className="session-form-input"
-                            type="password"
-                            value={this.state.password2}
-                            placeholder="Confirm password"
-                            onChange={this.handleInput("password2")}
-                        />
-
-                        <button className="form-btn">Sign up</button>
-                    </form>
-                    <div className="form-redirect">
-                        <p>Already have an account?</p>&nbsp;
-                        <Link to="/login">Log in</Link>
+                        <div className="register-form-input">
+                            <p className="register-form-label">a/A Office</p>
+                            <select className="session-form-input" value={sfOffice} onChange={handleOffice}>
+                                <option value="sf">San Francisco</option>
+                                <option value="ny">New York</option>
+                            </select>
+                        </div>
                     </div>
+
+                    <ul className="errors-ele">{emailErrors}</ul>
+
+                    <p className="session-form-label">Password</p>
+                    <input
+                        className="session-form-input"
+                        type="password"
+                        value={password}
+                        placeholder="Password"
+                        onChange={handlePassword}
+                    />
+
+                    <ul className="errors-ele">{passwordErrors}</ul>
+
+                    <p className="session-form-label">Confirm Password</p>
+                    <input
+                        className="session-form-input"
+                        type="password"
+                        value={password2}
+                        placeholder="Confirm password"
+                        onChange={handlePassword2}
+                    />
+
+                    <button className="form-btn">Sign up</button>
+                </form>
+                <div className="form-redirect">
+                    <p>Already have an account?</p>&nbsp;
+                        <Link to="/login">Log in</Link>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default withRouter(Register);

@@ -1,79 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 
-class Login extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: "",
-            password: ""
-        }
-        this.handleLogin = this.handleLogin.bind(this);
-    }
+const Login = (props) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    componentWillUnmount() {
-        this.props.clearSessionErrors()
-    }
+    const handleEmail = (e) => { setEmail(e.target.value) }
+    const handlePassword = (e) => { setPassword(e.target.value) }
 
-    handleInput(inputType) {
-        return (event) => {
-            this.setState({ [inputType]: event.target.value })
-        }
-    }
-
-    handleLogin(event) {
-        event.preventDefault();
-        const user = Object.assign({}, this.state)
-        this.props.loginUser(user)
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const user = {email: email, password: password}
+        props.loginUser(user)
             .then(
                 res => {
-                    if (res.payload) this.props.history.push("/")
+                    if (res.payload) props.history.push("/")
                 }
             )
     }
 
-    render() {
+    useEffect( () => {
+        return function cleanup() {
+            props.clearSessionErrors()
+        }
+    }, []);
 
-        const emailErrors = this.props.errors.email;
-        const passErrors = this.props.errors.password;
+    const emailErrors = props.errors.email;
+    const passErrors = props.errors.password;
 
-        return (
-            <div className="session-container">
-                <div className="sessions-container">
-                    <h1 className="session-header">Log In</h1>
-                    <form className="session-form" onSubmit={this.handleLogin}>
-                        <p className="session-form-label">Email</p>
-                        <input
-                            className="session-form-input"
-                            type="text"
-                            value={this.state.email}
-                            placeholder="name@company.com"
-                            onChange={this.handleInput("email")}
-                        />
+    return (
+        <div className="session-container">
+            <div className="sessions-container">
+                <h1 className="session-header">Log In</h1>
+                <form className="session-form" onSubmit={handleLogin}>
+                    <p className="session-form-label">Email</p>
+                    <input
+                        className="session-form-input"
+                        type="text"
+                        value={email}
+                        placeholder="name@company.com"
+                        onChange={handleEmail}
+                    />
 
-                        <ul className="errors-ele">{emailErrors}</ul>
+                    <ul className="errors-ele">{emailErrors}</ul>
 
-                        <p className="session-form-label">Password</p>
-                        <input
-                            className="session-form-input"
-                            type="password"
-                            value={this.state.password}
-                            placeholder="Password"
-                            onChange={this.handleInput("password")}
-                        />
+                    <p className="session-form-label">Password</p>
+                    <input
+                        className="session-form-input"
+                        type="password"
+                        value={password}
+                        placeholder="Password"
+                        onChange={handlePassword}
+                    />
 
-                        <ul className="errors-ele">{passErrors}</ul>
+                    <ul className="errors-ele">{passErrors}</ul>
 
-                        <button className="form-btn">Log in</button>
-                    </form>
-                    <div className="form-redirect">
-                        <p>Don't have an account?</p>&nbsp;
+                    <button className="form-btn">Log in</button>
+                </form>
+                <div className="form-redirect">
+                    <p>Don't have an account?</p>&nbsp;
                         <Link to="/register">Sign Up</Link>
-                    </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
+
 }
 
 export default withRouter(Login);
