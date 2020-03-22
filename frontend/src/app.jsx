@@ -1,8 +1,8 @@
 import React from "react";
 import {Link, Route, Switch} from "react-router-dom";
 import Splash from "./components/splash";
-import RegisterContainer from "./components/session/register_container";
-import LoginContainer from "./components/session/login_container";
+import Register from "./components/session/register";
+import Login from "./components/session/login";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import RoutesMain from "./components/routes/routes_main";
@@ -21,8 +21,8 @@ const App = props => {
             <main>
                 <Switch>
                     <Route exact path="/" component={Splash} />
-                    <Route path="/register" component={RegisterContainer} />
-                    <Route path="/login" component={LoginContainer} />
+                    <Route path="/register" component={Register} />
+                    <Route path="/login" component={Login} />
                     <Route path="/food" component={FoodMain} />
                     <Route path="/routes" component={RoutesMain} />
                 </Switch>

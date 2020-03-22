@@ -1,9 +1,8 @@
 import React from "react";
 import {Link, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {deleteSession} from "../actions/session_actions";
+import {logoutUser} from "../actions/session_actions";
 import {clearRoutes} from "../actions/route_actions";
-import Logo from "../../images/aa_logo.svg";
 import CircleLogo from "../../images/aa_circle_logo.png";
 
 const mstp = state => ({
@@ -12,17 +11,17 @@ const mstp = state => ({
 })
 
 const mdtp = dispatch => ({
-    deleteSession: () => dispatch(deleteSession()),
+    logoutUser: () => dispatch(logoutUser()),
     clearRoutes: () => dispatch(clearRoutes())
 })
 
 const Header = (props) => {
 
-    const handleLogout = event => {
-        event.preventDefault();
+    const handleLogout = e => {
+        e.preventDefault();
         props.clearRoutes();
-        props.deleteSession()
-        props.history.push("/")
+        props.logoutUser()
+        props.history.push("/login")
     }
 
     const handleRoutePage = event => {
@@ -50,7 +49,6 @@ const Header = (props) => {
     return (
         <div className="header-container">
             <div className="header-links">
-                {/* <Link to="/" id="logo"><img src={Logo} /></Link> */}
                 <Link to="/" id="logo"><img src={CircleLogo} /></Link>
                 <Link to="/food" id="food-link" className="session-lnk">Food & Restaurants</Link>
             </div>

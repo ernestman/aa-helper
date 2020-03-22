@@ -1,36 +1,47 @@
 import React, {useState, useEffect} from "react";
 import {withRouter, Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {
+    registerUser,
+    customSessionErrors,
+    clearSessionErrors
+} from "../../actions/session_actions";
+
+const mstp = (state) => ({
+    errors: state.errors.session
+})
+
+const mdtp = (dispatch) => ({
+    registerUser: user => dispatch(registerUser(user)),
+    customSessionErrors: errors => dispatch(customSessionErrors(errors)),
+    clearSessionErrors: () => dispatch(clearSessionErrors())
+})
 
 const Register = (props) => {
-    const [email, setEmail] = useState("")
-    const [sfOffice, setOffice] = useState("sf")
-    const [password, setPassword] = useState("")
-    const [password2, setPassword2] = useState("")
 
-    const handleEmail = (e) => { setEmail(e.target.value) }
-    const handleOffice = (e) => { setOffice(e.target.value) }
-    const handlePassword = (e) => { setPassword(e.target.value) }
-    const handlePassword2 = (e) => { setPassword2(e.target.value) }
+    const [registerForm, setRegisterForm] = useState({
+        email: "",
+        sf_office: "sf",
+        password: "",
+        password2: ""
+    })
 
     const handleRegister = (e) => {
         e.preventDefault();
         const newUser = {
-            email: email,
-            sf_office: sfOffice,
-            password: password,
-            password2: password2
+            email: registerForm.email,
+            sf_office: registerForm.sfOffice === "sf" ? true : false,
+            password: registerForm.password,
+            password2: registerForm.password2
         }
-        if (password === password2) {
+        if (registerForm.password === registerForm.password2) {
             props.registerUser(newUser)
-                .then(
-                    res => {
+                .then( res => {
                         if (res.payload) props.history.push("/")
                     }
                 )
         } else {
-            let errors = {
-                password: ["Passwords do not match"]
-            }
+            let errors = { password: ["Passwords do not match"] }
             props.customSessionErrors(errors)
         }
     }
@@ -55,15 +66,19 @@ const Register = (props) => {
                             <input
                                 className="session-form-input"
                                 type="text"
-                                value={email}
+                                value={registerForm.email}
                                 placeholder="name@company.com"
-                                onChange={handleEmail}
+                                onChange={ e => setRegisterForm({ ...registerForm, email: e.target.value }) }
                             />
                         </div>
 
                         <div className="register-form-input">
                             <p className="register-form-label">a/A Office</p>
-                            <select className="session-form-input" value={sfOffice} onChange={handleOffice}>
+                            <select 
+                                className="session-form-input"
+                                value={registerForm.sfOffice}
+                                onChange={ e => setRegisterForm({ ...registerForm, sfOffice: e.target.value }) }
+                            >
                                 <option value="sf">San Francisco</option>
                                 <option value="ny">New York</option>
                             </select>
@@ -76,9 +91,9 @@ const Register = (props) => {
                     <input
                         className="session-form-input"
                         type="password"
-                        value={password}
+                        value={registerForm.password}
                         placeholder="Password"
-                        onChange={handlePassword}
+                        onChange={ e => setRegisterForm({ ...registerForm, password: e.target.value }) }
                     />
 
                     <ul className="errors-ele">{passwordErrors}</ul>
@@ -87,9 +102,9 @@ const Register = (props) => {
                     <input
                         className="session-form-input"
                         type="password"
-                        value={password2}
+                        value={registerForm.password2}
                         placeholder="Confirm password"
-                        onChange={handlePassword2}
+                        onChange={ e => setRegisterForm({ ...registerForm, password2: e.target.value }) }
                     />
 
                     <button className="form-btn">Sign up</button>
@@ -103,4 +118,4 @@ const Register = (props) => {
     )
 }
 
-export default withRouter(Register);
+export default withRouter(connect(mstp, mdtp)(Register));

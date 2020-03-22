@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
+import {connect} from "react-redux";
+import { loginUser, clearSessionErrors } from "../../actions/session_actions";
+
+const mstp = state => ({
+    errors: state.errors.session
+})
+
+const mdtp = dispatch => ({
+    loginUser: user => dispatch(loginUser(user)),
+    clearSessionErrors: () => dispatch(clearSessionErrors())
+})
 
 const Login = (props) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
-    const handleEmail = (e) => { setEmail(e.target.value) }
-    const handlePassword = (e) => { setPassword(e.target.value) }
+    const [loginForm, setLoginForm] = useState( {email: "", password: ""} )
+    // useState does not automatically merge and update object, need spread operater first
 
     const handleLogin = (e) => {
         e.preventDefault();
-        const user = {email: email, password: password}
-        props.loginUser(user)
+        props.loginUser(loginForm)
             .then(
                 res => {
                     if (res.payload) props.history.push("/")
@@ -37,9 +45,9 @@ const Login = (props) => {
                     <input
                         className="session-form-input"
                         type="text"
-                        value={email}
+                        value={loginForm.email}
                         placeholder="name@company.com"
-                        onChange={handleEmail}
+                        onChange={ e => setLoginForm({ ...loginForm, email: e.target.value }) }
                     />
 
                     <ul className="errors-ele">{emailErrors}</ul>
@@ -48,9 +56,9 @@ const Login = (props) => {
                     <input
                         className="session-form-input"
                         type="password"
-                        value={password}
+                        value={loginForm.password}
                         placeholder="Password"
-                        onChange={handlePassword}
+                        onChange={ e => setLoginForm({ ...loginForm, password: e.target.value }) }
                     />
 
                     <ul className="errors-ele">{passErrors}</ul>
@@ -67,4 +75,4 @@ const Login = (props) => {
 
 }
 
-export default withRouter(Login);
+export default withRouter(connect(mstp, mdtp)(Login));
