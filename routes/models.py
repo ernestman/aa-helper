@@ -2,7 +2,7 @@ from django.db import models
 from users.models import User
 
 class Route(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True, blank=False)
     start_lat = models.FloatField(blank=False)
     start_lon = models.FloatField(blank=False)
     end_lat = models.FloatField(blank=False)

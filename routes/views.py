@@ -36,5 +36,6 @@ class DeleteRouteAPIView(APIView):
     def delete(self, request, id):
         route = Route.objects.get(id=id)
         route.delete()
-        serializer = RouteSerializer(route)
-        return Response(serializer.data)
+        return Response("Route deleted")
+        # serializer = RouteSerializer(route)
+        # return Response(serializer.data)

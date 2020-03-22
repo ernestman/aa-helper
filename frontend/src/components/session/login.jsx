@@ -32,6 +32,8 @@ const Login = (props) => {
             props.clearSessionErrors()
         }
     }, []);
+    // argument = [] -> only executing on the first rendering
+    // argument = [loginForm] -> use effect executed every time those values change
 
     const emailErrors = props.errors.email;
     const passErrors = props.errors.password;

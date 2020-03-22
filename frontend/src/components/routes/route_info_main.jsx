@@ -10,6 +10,27 @@ const mstp = (state, ownProps) => {
     }
 }
 
+// const RouteMainInfo = (props) => {
+
+//     const test = props.singleRoute.directions[0];
+//     const testdiv = document.createElement('DIV');
+//     testdiv.innerHTML = test;
+//     // console.log(testdiv);
+
+//     const directions = props.singleRoute.directions.map((dir, i) => (
+//         <li key={i}>{dir}</li>
+//     ))
+
+//     return (
+//         <div className="routes-main-api-info">
+//             <h1>Routes Main API info</h1>
+//             <h2>Directions</h2>
+//             {directions}
+//         </div>
+//     )
+    
+// }
+
 class RouteMainInfo extends React.Component {
     constructor(props) {
         super(props)
