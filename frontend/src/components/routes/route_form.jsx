@@ -99,6 +99,7 @@ const RouteForm = (props) => {
                     .then(
                         res => {
                             if (res.route.statusText === "OK") {
+                                console.log(res)
                                 props.closeModal();
                                 props.history.push(`/routes/${res.route.data.id}`);
                             }

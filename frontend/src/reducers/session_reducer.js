@@ -1,4 +1,5 @@
 import {SESSION_CREATED, SESSION_DELETED} from "../actions/session_actions";
+import {googleDirectionsAPI} from "../util/api_util";
 
 const initialState = {
     token: localStorage.getItem("token"),
@@ -6,13 +7,20 @@ const initialState = {
 }
 
 const sessionReducer = (state=initialState, action) => {
-    Object.freeze(state);
+    // Object.freeze(state);
     let nextState = Object.assign({}, state);
 
     switch(action.type) {
         case SESSION_CREATED:
             localStorage.setItem("token", action.payload.data.token);
             localStorage.setItem("user", JSON.stringify(action.payload.data.user));
+
+            // let routesArr = []
+            // action.payload.data.routes.forEach( route => {
+            //     setTimeout(googleDirectionsAPI, 1000, route, routesArr)
+            // })
+
+            // localStorage.setItem("routes", JSON.stringify(routesArr));
             localStorage.setItem("routes", JSON.stringify(action.payload.data.routes));
             
             nextState["token"] = localStorage.getItem("token");

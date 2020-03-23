@@ -20,11 +20,12 @@ const Login = (props) => {
     const handleLogin = (e) => {
         e.preventDefault();
         props.loginUser(loginForm)
-            .then(
-                res => {
-                    if (res.payload) props.history.push("/")
-                }
-            )
+            // .then(
+            //     res => {
+            //         console.log(res);
+            //         if (res.payload) props.history.push("/")
+            //     }
+            // )
     }
 
     useEffect( () => {

@@ -44,7 +44,9 @@ export const registerUser = user => dispatch => (
 export const loginUser = user => dispatch => (
     SessionUtil.login(user)
         .then(
-            payload => dispatch(createSession(payload))
+            payload => {
+                dispatch(createSession(payload))
+            }
         )
         .catch(
             errors => dispatch(sessionErrors(errors.response.data))

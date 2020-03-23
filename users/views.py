@@ -31,16 +31,31 @@ class RegisterAPIView(APIView):
             })
 
 class LoginAPIView(APIView):
+    # permission_classes = [AllowAny]
+    # def post(self, request):
+    #     user_serializer = LoginSerializer(data=request.data)
+    #     user_serializer.is_valid(raise_exception=True)
+    #     user = user_serializer.validated_data # if serializer data is _valid ^^^ we can access it
+
+    #     routes = User.objects.get(id=user.id).routes.all()
+    #     routes_api_request = routes_google_api(routes)
+
+    #     routes_serializer = RouteSerializer(routes_api_request, many=True)
+    #     return Response({
+    #         "user": user_serializer.data,
+    #         "routes": routes_serializer.data,
+    #         "token": AuthToken.objects.create(user)[1]
+    #     })
+
     permission_classes = [AllowAny]
     def post(self, request):
         user_serializer = LoginSerializer(data=request.data)
         user_serializer.is_valid(raise_exception=True)
-        user = user_serializer.validated_data # if serializer data is _valid ^^^ we can access it
+        # if serializer data is _valid ^^^ we can access it
+        user = user_serializer.validated_data
 
         routes = User.objects.get(id=user.id).routes.all()
-        routes_api_request = routes_google_api(routes)
-
-        routes_serializer = RouteSerializer(routes_api_request, many=True)
+        routes_serializer = RouteSerializer(routes, many=True)
         return Response({
             "user": user_serializer.data,
             "routes": routes_serializer.data,

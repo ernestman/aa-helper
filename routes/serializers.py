@@ -9,11 +9,11 @@ class RouteSerializer(serializers.Serializer):
     end_lat = serializers.FloatField()
     end_lon = serializers.FloatField()
     travel_mode = serializers.CharField()
-    start_city = serializers.CharField(read_only=True)
-    end_city = serializers.CharField(read_only=True)
-    time = serializers.CharField(read_only=True)
-    distance = serializers.CharField(read_only=True)
-    directions = serializers.ListField(
-        child=serializers.CharField(),
-        allow_empty=True
-    )
+    # start_city = serializers.CharField(read_only=True)
+    # end_city = serializers.CharField(read_only=True)
+    # time = serializers.CharField(read_only=True)
+    # distance = serializers.CharField(read_only=True)
+    # directions = serializers.ListField(
+    #     child=serializers.CharField(),
+    #     allow_empty=True
+    # )
