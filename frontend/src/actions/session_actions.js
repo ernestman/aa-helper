@@ -58,4 +58,7 @@ export const logoutUser = () => dispatch => (
         .then(
             () => dispatch(deleteSession())
         )
+        .catch(
+            errors => console.log(errors.response)
+        )
 )

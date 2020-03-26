@@ -11,24 +11,24 @@ const routesReducer = (state={}, action) => {
         case SESSION_CREATED:
             let routes1 = action.payload.data.routes
 
-            // if (routes1) {
-            //     routes1.forEach(route => {
-            //         nextState[route.id] = route
-            //     })
-            //     return nextState;
-            // } else {
-            //     return state;
-            // }
-
             if (routes1) {
                 routes1.forEach(route => {
-                    setTimeout(googleDirectionsAPI, 280, route, nextState)
+                    nextState[route.id] = route
                 })
-
                 return nextState;
             } else {
                 return state;
             }
+
+            // if (routes1) {
+            //     routes1.forEach(route => {
+            //         setTimeout(googleDirectionsAPI, 280, route, nextState)
+            //     })
+
+            //     return nextState;
+            // } else {
+            //     return state;
+            // }
 
 
 

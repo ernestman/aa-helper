@@ -14,8 +14,6 @@ export const logout = () => {
 
 
 
-
-
 export const tokenConfig = getState => {
     const token = getState().session.token || localStorage.getItem("token")
     const config = {
