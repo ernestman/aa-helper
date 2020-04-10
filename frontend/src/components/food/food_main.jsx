@@ -12,7 +12,9 @@ const FoodMain = (props) => {
     return (
         <div className="food-main-container">
             <FoodIndex/>
-            <FoodMap/>
+            <div className="food-map-sticky">
+                <FoodMap/>
+            </div>
         </div>
     )
 }

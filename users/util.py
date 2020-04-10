@@ -12,7 +12,7 @@ gmaps = googlemaps.Client(key=GOOGLE_API_KEY)
 
 def routes_google_api(query_set):
     for route in query_set:
-        time.sleep(0.28)
+        time.sleep(0.2)
         start_geocode = gmaps.reverse_geocode((route.start_lat, route.start_lon))
         end_geocode = gmaps.reverse_geocode((route.end_lat, route.end_lon))
         directions = gmaps.directions(

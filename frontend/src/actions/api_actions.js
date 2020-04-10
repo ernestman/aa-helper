@@ -13,8 +13,8 @@ export const clearYelp = () => ({
 })
 
 
-export const getYelp = () => dispatch => (
-    ApiUtil.getYelp()
+export const getYelp = office => dispatch => (
+    ApiUtil.getYelp(office)
         .then(
             res => dispatch(receiveYelp(res))
         )

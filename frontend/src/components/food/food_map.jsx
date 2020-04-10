@@ -25,6 +25,11 @@ class FoodMap extends React.Component {
             zoom: 15
         }
         this.map = new google.maps.Map(this.mapNode, mapOptions)
+        const marker = new google.maps.Marker({
+            position: center,
+            map: this.map,
+            title: "a/A Office"
+        })
     }
 
     render() {

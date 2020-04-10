@@ -10,3 +10,17 @@
     font-size: 16px;
     font-weight: 600;
 }
+
+.food-map-sticky {
+    height: 350px;
+    position: sticky;
+    top: 70px;
+    width: 35%;
+}
+
+// stick needs top right, left or bottom
+
+.food-map-container {
+    height: 100%;
+    width: 100%;
+}

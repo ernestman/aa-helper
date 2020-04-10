@@ -10,6 +10,10 @@ const sessionReducer = (state=initialState, action) => {
     // Object.freeze(state);
     let nextState = Object.assign({}, state);
 
+    const localStorageCb = (routes) => {
+        localStorage.setItem("routes", JSON.stringify(routes))
+    }
+
     switch(action.type) {
         case SESSION_CREATED:
             localStorage.setItem("token", action.payload.data.token);
@@ -17,8 +21,10 @@ const sessionReducer = (state=initialState, action) => {
 
             // let routesArr = []
             // action.payload.data.routes.forEach( route => {
-            //     setTimeout(googleDirectionsAPI, 1000, route, routesArr)
+            //     setTimeout(googleDirectionsAPI, 1000, route, )
             // })
+
+            // googleDirectionsAPI(action.payload.data.routes, localStorageCb)
 
             // localStorage.setItem("routes", JSON.stringify(routesArr));
             localStorage.setItem("routes", JSON.stringify(action.payload.data.routes));

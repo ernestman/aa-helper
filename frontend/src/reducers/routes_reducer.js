@@ -22,9 +22,9 @@ const routesReducer = (state={}, action) => {
 
             // if (routes1) {
             //     routes1.forEach(route => {
-            //         setTimeout(googleDirectionsAPI, 280, route, nextState)
+            //         setTimeout(googleDirectionsAPI, 1000, route, nextState)
             //     })
-
+                // localStorage.setItem("routes", JSON.stringify(Object.values(nextState.entities.routes)))
             //     return nextState;
             // } else {
             //     return state;

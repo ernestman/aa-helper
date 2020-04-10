@@ -1,7 +1,11 @@
 import axios from "axios";
 
-export const getYelp = () => {
-    return axios.get("/yelp")
+export const getYelp = office => {
+    return axios.get("/yelp", {
+        params: {
+            office: office
+        }
+    })
 }
 
 export const googleDirectionsAPI = (route, storeRoutes) => {
