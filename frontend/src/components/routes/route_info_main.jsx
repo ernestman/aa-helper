@@ -12,14 +12,9 @@ const mstp = (state, ownProps) => {
 
 const RouteMainInfo = props => {
 
-    const test = props.singleRoute.directions[0];
-    const testdiv = document.createElement('DIV');
-    testdiv.innerHTML = test;
-    console.log(testdiv);
-
-    const directions = props.singleRoute.directions.map((dir, i) => (
-        <li key={i}>{dir}</li>
-    ))
+    const directions = props.singleRoute.directions.map((step, i) => {
+        return <div key={i} dangerouslySetInnerHTML={{__html: step}}></div>
+    })
 
     return (
         <div className="routes-main-api-info">
