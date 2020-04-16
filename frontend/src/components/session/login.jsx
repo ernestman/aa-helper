@@ -20,6 +20,13 @@ const Login = props => {
     const handleLogin = (e) => {
         e.preventDefault();
         props.loginUser(loginForm)
+            .then(
+                res => {
+                    if (res.payload.statusText === "OK") {
+                        props.history.push(`/`)
+                    }
+                }
+            )
     }
 
     useEffect( () => {

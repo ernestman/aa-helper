@@ -43,7 +43,7 @@ const RoutesMain = props => {
             <div className="routes-main-api-info-container">
                 <Switch>
                     <Route exact path={props.match.path} component={NoDirections} />
-                    <Route path={`${props.match.path}/:id`} component={RouteMainInfo} />
+                    <Route path={`${props.match.path}/:id`} component={RouteMainInfo}/>
                 </Switch>
                 {/* <RouteMainInfo /> */}
             </div>

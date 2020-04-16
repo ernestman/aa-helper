@@ -36,35 +36,3 @@ const App = props => {
 }
 
 export default App;
-
-// class App extends React.Component {
-//     constructor(props) {
-//         super(props)
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 <header>
-//                     <Header />
-//                 </header>
-
-//                 <main>
-//                     <Switch>
-//                         <Route exact path="/" component={Splash}/>
-//                         <Route path="/register" component={RegisterContainer}/>
-//                         <Route path="/login" component={LoginContainer}/>
-//                         <Route path="/food" component={FoodMain}/>
-//                         <Route path="/routes" component={RoutesMainContainer}/>
-//                     </Switch>
-//                 </main>
-
-//                 <footer>
-//                     <Footer />
-//                 </footer>
-//             </div>
-//         )
-//     }
-// }
-
-// export default connect(null, mdtp)(App);
