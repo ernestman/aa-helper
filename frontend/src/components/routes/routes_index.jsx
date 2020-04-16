@@ -2,6 +2,7 @@ import React from "react";
 import RouteItem from "./route_item";
 import PlusIcon from "../../../images/plus_icon.svg";
 
+import {withRouter} from "react-router-dom";
 
 const RoutesIndex = props => {
 
@@ -10,11 +11,14 @@ const RoutesIndex = props => {
         props.openModal("routeForm")
     }
 
+    const currentRoute = parseInt(props.match.params.id)
+
     const myRoutes = props.routes.map( (route, i) => (
             <RouteItem
                 key={i}
                 route={route}
                 deleteRoute={props.deleteRoute}
+                currentRoute={currentRoute}
             />
     ))
 
@@ -34,4 +38,4 @@ const RoutesIndex = props => {
     )
 }
 
-export default RoutesIndex;
+export default withRouter(RoutesIndex);

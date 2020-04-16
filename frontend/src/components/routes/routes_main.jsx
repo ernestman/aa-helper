@@ -35,7 +35,10 @@ const RoutesMain = props => {
                     <Route path={`${props.match.path}/:id`} component={RoutesMap} />
                 </Switch>
 
-                <RoutesIndex routes={routes} openModal={openModal} deleteRoute={deleteRoute}/>
+                <Route
+                    path={`${props.match.path}/:id`}
+                    component={() => <RoutesIndex routes={routes} openModal={openModal} deleteRoute={deleteRoute}/>}
+                />
             </div>
             <div className="routes-main-api-info-container">
                 <Switch>

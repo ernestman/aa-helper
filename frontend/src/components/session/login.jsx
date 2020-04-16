@@ -12,7 +12,7 @@ const mdtp = dispatch => ({
     clearSessionErrors: () => dispatch(clearSessionErrors())
 })
 
-const Login = (props) => {
+const Login = props => {
 
     const [loginForm, setLoginForm] = useState( {email: "", password: ""} )
     // useState does not automatically merge and update object, need spread operater first

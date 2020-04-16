@@ -13,6 +13,15 @@
     cursor: pointer;
 }
 
+.route-item:hover {
+    background: #ededed;
+    transition: 0.2s;
+}
+
+.current-route {
+    background: #dddbff;
+}
+
 .route-top {
     display: flex;
     justify-content: space-between;
