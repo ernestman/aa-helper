@@ -10,6 +10,10 @@ const mstp = (state, ownProps) => {
     }
 }
 
+// const RoutesMap = props = {
+
+// }
+
 class RoutesMap extends React.Component {
     constructor(props) {
         super(props)
