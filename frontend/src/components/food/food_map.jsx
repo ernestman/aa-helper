@@ -5,6 +5,10 @@ const mstp = state => {
     return {office: state.entities.user.sf_office}
 }
 
+// const FoodMap = props => {
+
+// }
+
 class FoodMap extends React.Component {
     constructor(props) {
         super(props)
