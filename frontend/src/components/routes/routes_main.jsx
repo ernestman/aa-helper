@@ -32,7 +32,7 @@ const RoutesMain = props => {
             <div className="routes-main-top">
                 <Switch>
                     <Route exact path={props.match.path} component={MapDefault} />
-                    <Route path={`${props.match.path}/:id`} component={RoutesMap} />
+                    <Route path={`${props.match.path}/:id`} component={RoutesMap}/>
                 </Switch>
 
                 <Route

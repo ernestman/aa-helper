@@ -12,17 +12,17 @@ const mstp = (state, ownProps) => {
 
 const RouteMainInfo = props => {
 
-    const directions = props.singleRoute.directions.map((step, i) => {
-        return <div key={i} dangerouslySetInnerHTML={{__html: step}}></div>
-    })
+    // const directions = props.singleRoute.directions.map((step, i) => {
+    //     return <div key={i} dangerouslySetInnerHTML={{__html: step}}></div>
+    // })
 
     return (
         <div className="routes-main-api-info">
             <h1>Routes Main API info</h1>
             <h2>Directions</h2>
-            {directions}
+            {/* {directions} */}
         </div>
     )
 }
 
-export default withRouter(connect(mstp, null)(RouteMainInfo));
+export default connect(mstp, null)(RouteMainInfo);

@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux"
 
-const mstp = state => ({
-    office: state.entities.user.sf_office
-})
+const mstp = state => {
+    return {office: state.entities.user.sf_office}
+}
 
 class FoodMap extends React.Component {
     constructor(props) {
