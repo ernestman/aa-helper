@@ -25,7 +25,7 @@ const Splash = (props) => {
                 <img src={AsanaChecks}/>
             </div>
 
-            <div className="splash-feature">
+            {/* <div className="splash-feature">
                 <div className="feature-container">
                     <div className="info-container">
                         <div className="info-card">
@@ -71,7 +71,7 @@ const Splash = (props) => {
                         <p className="splash-text">Discover great restaurants and good food nearby</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
